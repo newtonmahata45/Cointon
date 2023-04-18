@@ -1,0 +1,3 @@
+[submodule "Cointon/client/Cointon/client/NewRo-Market"]
+	path = Cointon/client/Cointon/client/NewRo-Market
+	url = https://github.com/newtonmahata45/Cointon.git
