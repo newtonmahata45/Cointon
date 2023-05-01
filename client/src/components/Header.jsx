@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
-// import axios from "axios";
+import axios from "axios";
 import { CoinList } from "../config/api";
 import { numberWithCommas } from "./Banner/carousal";
 
@@ -23,17 +23,6 @@ const Header = () => {
 
   console.log("coins=>", coins);
 
-  // let endPoint = window.location.pathname; //.slice(-1)
-
-  // let [goToHome, setGoToHome] = useState(false);
-
-  // function gohome() {
-  //   // if (goToHome) {
-  //     if (endPoint == "/") {
-  //       window.location.reload(false);
-  //     } else return <Navigate to="/" />;
-  //   // }
-  // }
   const searchFilter = () => {
     if (!search) return [];
     return coins.filter(
@@ -44,15 +33,11 @@ const Header = () => {
   };
 
   useEffect(() => {
-    // if(goToHome){
-    //   gohome();
-    // }
-    // else
     fetchCoins();
   }, [search, currency]);
 
+  const navigate = useNavigate()
   return (
-    <>
       <header className="header">
         <div className="container">
           <Link className="logo" to={"/"}>
@@ -81,8 +66,8 @@ const Header = () => {
             <option value={"INR"}>₹ INR</option>
           </select>
           <div className="sign">
-            <button className="btn btn-primary sign-btn login">LogIn</button>
-            <button className="btn btn-primary sign-btn signup">SignUp</button>
+            <button className="btn btn-primary sign-btn login" onClick={()=>navigate(`/sign/in`)} >LogIn</button>
+            <button className="btn btn-primary sign-btn signup" onClick={()=>navigate(`/sign/up`)} >SignUp</button>
           </div>
         </div>
 
@@ -109,7 +94,6 @@ const Header = () => {
           })}
         </div>
       </header>
-    </>
   );
 };
 

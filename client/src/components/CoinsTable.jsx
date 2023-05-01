@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
 // import DataTable from "react-data-table-component";
-import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { numberWithCommas } from "./Banner/carousal";
 
 function CoinsTable() {
@@ -50,7 +50,7 @@ function CoinsTable() {
   console.log("FromTable =>", coins);
 
   // const customStyles = {
-    //   rows: {
+  //   rows: {
   //     style: {
   //       fontSize: "1rem",
   //       fontWeight: "bold",
@@ -86,50 +86,65 @@ function CoinsTable() {
   //     </div>
   //   </div>
   // );
-  
+
   // const goto = () => {
   //   console.log("NEwton");
   //   <Link to={`/coins/${"row.id"}`}></Link> ;
   // };
   // console.log(window.location.href)
+
+  const navigate = useNavigate();
   return (
     <>
       <div
         style={{
-          textAlign: "center", 
+          textAlign: "center",
           marginTop: "2rem",
-          // padding: "2rem 0",
-          // height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          // alignItems: "center",
         }}
       >
-        <h2 style={{ background: "hsl(252, 30%, 95%)", fontFamily: "monospace", padding:"0.5rem"}}> Cryptocurrency Prices by Market Cap </h2>
+        <h2
+          style={{
+            background: "hsl(252, 30%, 95%)",
+            fontFamily: "monospace",
+            padding: "0.5rem",
+          }}
+        >
+          
+          Cryptocurrency Prices by Market Cap
+        </h2>
         <table className="table">
           <thead>
-            <tr>
-            <th>Coin</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>24h Change</th>
-            <th>Market Cap</th>
+            <tr className="thead" >
+              <th>Coin</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>24h Change</th>
+              <th>Market Cap</th>
             </tr>
           </thead>
           <tbody>
-            {coins.map((each)=>{return (
-              <tr key={each.id} >
-                  <Link to = {`/coins/${each.id}`}  key={each.id} >
-                <td >
-                  <img src={each.image} alt={each.name} style={{ height: "2.5rem", borderRadius: "50%" }}
-                  />
-                </td>
-                <td>{each.name}</td>
-                <td>
-                  {symbol} {numberWithCommas(each.current_price.toFixed(2))}
-                </td>
-                <td>dummy1</td>
-                <td>dummy2</td>
-                </Link>
+            {coins.map((each) => {
+              return (
+                <tr className="table-row" onClick={() => navigate(`/coins/${each.id}`)} key={each.id} >
+                  <td>
+                    <img
+                      src={each.image}
+                      alt={each.name}
+                      style={{ height: "2.5rem", borderRadius: "50%" }}
+                    />
+                  </td>
+                  <td className="table-coin-name" > {each.name} </td>
+                  <td>
+                    {symbol} {numberWithCommas(each.current_price.toFixed(2))}
+                  </td>
+                  <td>{each.price_change_percentage_24h.toFixed(2)} %</td>
+                  <td>dummy2</td>
                 </tr>
-              )})}
+              );
+            })}
           </tbody>
         </table>
       </div>

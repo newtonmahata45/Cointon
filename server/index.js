@@ -1,21 +1,25 @@
-const express = require("express")
-const mongoose = require("mongoose")
-const route = require("./src/route")
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const route = require("./src/route");
 const multer = require("multer");
 const dotenv = require("dotenv");
-dotenv.config()
 
-const app = express()
+const cors = require('cors'); 
+app.use(cors()) //{ origin: 'http://127.0.0.1:5173/'}
 
-app.use(express.json())
-app.use(multer().any())
+dotenv.config();
+
+
+app.use(express.json());
+app.use(multer().any());
 
 mongoose.connect(process.env.DATABASESTRING, { useNewUrlParser: true }, mongoose.set('strictQuery', false))
 
     .then(() => console.log("MongoDb is connected"))
-    .catch((err) => console.log(err))
+    .catch((err) => console.log(err));
 
-app.use("/", route)
+app.use("/", route);
 
 
 
