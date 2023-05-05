@@ -23,6 +23,11 @@ const SignUpLogin = () => {
   const handleTabToggle = () => {
     setIsSignUp(!isSignUp);
   };
+  const [eye, setEye] = useState(true);
+  const handleEye = () => {
+    setEye(!eye)
+  }
+  "fa fa-eye-slash"
   const navigate = useNavigate();
 
   async function submit(e) {
@@ -82,7 +87,7 @@ const SignUpLogin = () => {
         localStorage.setItem("token", JSON.stringify(res.data.token));
         navigate(`/welcome`);
       } else {
-        window.alert(res.message);
+        window.alert(res.data.message);
       }
     }
   }
@@ -95,8 +100,6 @@ const SignUpLogin = () => {
   }
   return (
     <div className="body">
-      ultimate@gmail.com <br/>
-      Ultimate21#
       <div className="container">
         {/* <div className="card"> */}
         <div className="drop">
@@ -109,7 +112,7 @@ const SignUpLogin = () => {
                 <h2>Sign Up</h2>
               </div>
               <div
-                className={`tab ${!isSignUp ? "active" : "inactive"}`}
+                className={`tab ${!isSignUp ? "activ" : "inactiv"}`}
                 onClick={handleTabToggle}
               >
                 <h2>Login</h2>
@@ -126,8 +129,8 @@ const SignUpLogin = () => {
                         value={user.name}
                         type="text"
                         placeholder="Name"
-                        required
                         id="name"
+                        required
                       />
                     </div>
                     <div className="input">
@@ -136,8 +139,8 @@ const SignUpLogin = () => {
                         value={user.phone}
                         type="text"
                         placeholder="Mobile Number"
-                        required
                         id="phone"
+                        required
                       />
                     </div>
                     <div className="input">
@@ -146,19 +149,19 @@ const SignUpLogin = () => {
                         value={user.email}
                         type="email"
                         placeholder="Email"
-                        required
                         id="email"
+                        required
                       />
                     </div>
                     <div className="input">
                       <input
                         onChange={(e) => handle(e)}
                         value={user.password}
-                        type="password"
+                        type={eye ? "password" : "text"}
                         placeholder="Password"
-                        required
                         id="password"
-                      />
+                        required
+                      /><i className={eye ? "fa fa-eye-slash" : "fa fa-eye"} onClick={handleEye}></i>
                     </div>
                     <div className="input">
                       <input
@@ -191,11 +194,11 @@ const SignUpLogin = () => {
                       <input
                         onChange={(e) => handle(e)}
                         value={user.password}
-                        type="password"
+                        type={eye ? "password" : "text"}
                         placeholder="Password"
                         id="password"
                         required
-                      />
+                      /><i className={eye ? "fa fa-eye-slash" : "fa fa-eye"}  onClick={handleEye}></i>
                     </div>
                   </div>
                     <button type="submit">Log In </button>
