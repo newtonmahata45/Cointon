@@ -6,9 +6,9 @@ const authenticate = function (req, res, next) {
     try {
         
         const token = req.headers["x-api-key"]  // token from headers
-
+        console.log("token=>",token)
         if (!token) {
-            return res.status(400).send({ status: false, message: "token must be present in headers" })
+            return res.status(400).send({ status: false, message: "Token must be present in headers" })
         }
             
         jwt.verify(token, "secret-key-of-newton", function (err, decodedToken) {

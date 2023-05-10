@@ -5,7 +5,7 @@
     align-items: center;
   }
   
-  .card {
+  .drop {
     width: 300px;
     padding: 24px;
     background-color: #fff;
@@ -65,11 +65,18 @@
   min-height: 100vh;
   background: #eff0f4;
 }
+.background{
+  /* min-width: 50%; */
+  border: 1px solid;
+}
 .container {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  /* border: 1px solid; */
+  width: 450px;
+  /* padding-right: 6%; */
 }
 .container .drop {
   position: relative;
@@ -82,10 +89,8 @@
   transition: 0.5px;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   border-radius: 46% 54% 32% 68% / 35% 36% 64% 65% ;
-  /* border: 1px solid blueviolet; */
-  transition: all .15s ease-in-out;
+  transition: all .25s ease-in-out;
 }
 .container .drop:hover {
   border-radius: 50%;
@@ -135,50 +140,90 @@
 .tabs .active {
   display: flex;
   align-items: center;
-  color: #b311e4;  
-  margin-right: 10rem;
+  color: black;  
+  font-size: 1.1rem;
+  margin-right: 8rem;
   pointer-events:none;
-  /* border: 1px solid ; */
 }
 .tabs .inactiv {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  width: 80px;
-  margin-right: -10rem;
-  color:#838383;
+  height: 60px;
+  width: 60px;
+  margin-right: -8.4rem;
+  background: #be00fda1;
+  color:#fff;
   font-size: 8px;
   letter-spacing: 1px;
   cursor: pointer;
-  box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.1),
-  25px 35px 20px rgba(0, 0, 0, 0.2),
-  25px 30px 30px rgba(0, 0, 0, 0.05),
-  inset -20px -20px 25px rgb(255, 255, 255);
-  border-radius: 46% 54% 32% 68% / 35% 36% 64% 65% ;
+  box-shadow: inset 10px 10px 10px rgba(190, 1, 254, 0.05),
+  15px 25px 10px rgba(190, 1, 254, 0.1),
+  15px 20px 20px rgba(190, 1, 254, 0.1),
+  inset -10px -10px 15px rgb(255, 255, 255,0.5);
+  border-radius: 44% 56% 65% 35% / 57% 58% 42% 43% ;
   /* border: 1px solid blueviolet; */
-  transition: all .25s ease-in-out;
+  transition: .25s;
+}
+.tabs .inactiv::before{
+  content: "";
+  position: absolute;
+  top: 30px;
+  background: #fff;
+  height: 15px;
+  width: 15px;
+  opacity: 0.45;
+  border-radius: 50%;
 }
 .tabs .inactiv:hover{
   border-radius: 50%;
   
 }
 .tabs .activ {
-  color: #11d6e4;  
-  font-size: 1.1rem;
+  color:black;  
+  font-size: 1.2rem;
   margin-right: 4rem;
+  margin-top: 2rem;
   pointer-events:none;
 }
 .tabs .inactive {
   display: flex;
-  align-items: end;
-  margin-right: -12rem;
-  color:#9ec5a8;
+  justify-content: center;
+  align-items: center;
+  margin-right: -18rem;
   font-size: 12px;
   transition: all .4s ease-in-out;
+  height: 60px;
+  width: 60px;
+  background: #0083fda1;
+  color:#fff;
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: inset 10px 10px 10px rgba(190, 1, 254, 0.05),
+  12px 21px 8px rgba(1, 180, 255, 0.1),
+  12px 18px 16px rgba(1, 180, 255, 0.1),
+  inset -10px -10px 15px rgb(255, 255, 255,0.5);
+  border-radius: 44% 56% 65% 35% / 57% 58% 42% 43% ;
+  /* border: 1px solid blueviolet; */
+  /* transition: .25s; */
 
 }
-.container .drop .content .form {
+.tabs .inactive::before{
+  content: "";
+  position: absolute;
+  top: 25px;
+  /* left: 30px; */
+  background: #fff;
+  height: 15px;
+  width: 15px;
+  opacity: 0.45;
+  border-radius: 50%;
+}
+.tabs .inactive:hover{
+  border-radius: 50%;
+}
+.body .container .drop .content .form {
   /* border: 1px solid salmon; */
   height: 80%;
   display: flex;
@@ -186,16 +231,17 @@
   align-items: center;
   justify-content: space-between;
 }
-.container .drop .content .form .inputs {
+.body .container .drop .content .form .inputs {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.container .drop .content .form .input {
+.body .container .drop .content .form .input {
   margin-bottom: 10px;
 }
+
 .container .drop .content .form  .input::before {
   content: "";
   position: absolute;
@@ -222,6 +268,9 @@
   height: 25px;
   padding-left:25px ;
 }
+.container .drop .content .form input:focus{
+  background: rgb(245, 254, 255);
+}
 .container .drop .content .form  .input i{
   color: #cfcfcf;
   position: absolute;
@@ -247,6 +296,7 @@
   letter-spacing: 1px;
   font-weight: bold;
   transition: 0.28s;
+  cursor: pointer;
 }
 
 .container .drop .content .form button:hover{

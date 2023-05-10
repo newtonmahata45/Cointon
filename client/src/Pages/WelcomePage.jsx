@@ -20,9 +20,14 @@ function WelcomePage() {
   }
 
   async function getProfile(){
-    let profile = await axios.get("http://localhost:3001/profile",{"x-api-key":0},{"x-api-key":1})
-    if(profile.data.message)window.alert(profile.data.message);
-    console.log("Profile :", profile)
+    try{
+      let profile = await axios.get("http://localhost:3001/profile",{},{"x-api-key":1})
+      if(profile.data.message)window.alert(profile.data.message);
+      console.log("Profile :", profile)
+    }catch(err){
+      console.log("err=>",err.response.data.message)
+      window.alert(err.response.data.message)
+    }
   }
 
 

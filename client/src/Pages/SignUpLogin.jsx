@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import "./SignUpLogin.css"; // Import the CSS file for styling
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-
-let url = "http://localhost:3001/";
+let url = "http://localhost:3001";
 
 const SignUpLogin = () => {
+const navigate = useNavigate();
+  if(localStorage.getItem("token")){
+    navigate(`/welcome`);
+  }
   let { tab } = useParams();
   let up = tab == "in" ? false : true;
 
@@ -25,10 +28,8 @@ const SignUpLogin = () => {
   };
   const [eye, setEye] = useState(true);
   const handleEye = () => {
-    setEye(!eye)
-  }
-  "fa fa-eye-slash"
-  const navigate = useNavigate();
+    setEye(!eye);
+  };
 
   async function submit(e) {
     e.preventDefault();
@@ -36,44 +37,45 @@ const SignUpLogin = () => {
     // console.log("bo", user);
     // const res = await axios.post(`${url}register`,{name, phone, email, password, referCode})
     if (isSignUp) {
-      const res = await axios.post("http://localhost:3001/register", {
-        name,
-        phone,
-        email,
-        password,
-        referCode,
-      });
-      // const res = await fetch(`${url}register`, {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ name, phone, email, password, referCode }),
-      // });
-      // const createdUser = await res.json();
-
-      // window.alert("Success");
-
-      console.log("responce => ", res.status);
-
-      if (res.status == 201) {
-        window.alert(res.data.message);
-        setUser({
-          name: "",
-          phone: "",
+      try {
+        const res = await axios.post(`${url}/register`, {
+          name,
+          phone,
           email,
           password,
-          referCode: "",
+          referCode,
         });
-        handleTabToggle();
-      } else {
-        window.alert(res.data.message);
+        // const res = await fetch(`${url}register`, {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify({ name, phone, email, password, referCode }),
+        // });10
+        // const createdUser = await res.json();
+
+        // window.alert("Success");
+
+        // console.log("sign up responce => ", createdUser.status);
+
+        if (res.status == 201) {
+          window.alert(res.data.message);
+          setUser({
+            name: "",
+            phone: "",
+            email,
+            password,
+            referCode: "",
+          });
+          handleTabToggle();
+        }
+      } catch (err) {
+        console.log("result",err.response.data.message);
+        window.alert(err.response.data.message);
       }
     } else {
       // When Login button Clicked
-
-      const res = await axios.post("http://localhost:3001/login", {
-        email,
-        password,
-      });
+      console.log("headd");
+      try{
+      const res = await axios.post(`${url}/login`, { email, password });
       // const res = await fetch(`${url}login`, {
       //   method: "POST",
       //   headers: { "Content-Type": "application/json" },
@@ -81,13 +83,15 @@ const SignUpLogin = () => {
       // });
       // const loginUser = await res.json();
 
-      console.log("login responce", res);
-      console.log("headd");
+      console.log("login responce=>", res.status);
+
       if (res.data.token) {
         localStorage.setItem("token", JSON.stringify(res.data.token));
         navigate(`/welcome`);
-      } else {
-        window.alert(res.data.message);
+      }
+     }catch(err) {
+        console.log("the login error =>",err.response.data.message);
+        window.alert(err.response.data.message);
       }
     }
   }
@@ -100,6 +104,7 @@ const SignUpLogin = () => {
   }
   return (
     <div className="body">
+      {/* <div className="background">0</div> */}
       <div className="container">
         {/* <div className="card"> */}
         <div className="drop">
@@ -109,13 +114,13 @@ const SignUpLogin = () => {
                 className={`tab ${isSignUp ? "active" : "inactive"}`}
                 onClick={handleTabToggle}
               >
-                <h2>Sign Up</h2>
+                <h2>Sign up</h2>
               </div>
               <div
                 className={`tab ${!isSignUp ? "activ" : "inactiv"}`}
                 onClick={handleTabToggle}
               >
-                <h2>Login</h2>
+                <h2>Log in</h2>
               </div>
             </div>
             <form className="form" onSubmit={(e) => submit(e)}>
@@ -128,7 +133,7 @@ const SignUpLogin = () => {
                         onChange={(e) => handle(e)}
                         value={user.name}
                         type="text"
-                        placeholder="Name"
+                        placeholder="Full Name"
                         id="name"
                         required
                       />
@@ -161,7 +166,11 @@ const SignUpLogin = () => {
                         placeholder="Password"
                         id="password"
                         required
-                      /><i className={eye ? "fa fa-eye-slash" : "fa fa-eye"} onClick={handleEye}></i>
+                      />
+                      <i
+                        className={eye ? "fa fa-eye-slash" : "fa fa-eye"}
+                        onClick={handleEye}
+                      ></i>
                     </div>
                     <div className="input">
                       <input
@@ -173,7 +182,7 @@ const SignUpLogin = () => {
                       />
                     </div>
                   </div>
-                    <button type="submit">Sign Up</button>
+                  <button type="submit">Sign up</button>
                 </React.Fragment>
               )}
               {/* Login Form */}
@@ -198,17 +207,20 @@ const SignUpLogin = () => {
                         placeholder="Password"
                         id="password"
                         required
-                      /><i className={eye ? "fa fa-eye-slash" : "fa fa-eye"}  onClick={handleEye}></i>
+                      />
+                      <i
+                        className={eye ? "fa fa-eye-slash" : "fa fa-eye"}
+                        onClick={handleEye}
+                      ></i>
                     </div>
                   </div>
-                    <button type="submit">Log In </button>
+                  <button type="submit">Log In </button>
                 </React.Fragment>
               )}
             </form>
           </div>
         </div>
       </div>
-      
     </div>
   );
 }; //name, phone, email, password, city, referCode
