@@ -1,6 +1,6 @@
 const userModel = require("../models/userModel");
 const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 
 const registerUser = async function (req, res) {
     try {
@@ -34,11 +34,7 @@ const registerUser = async function (req, res) {
         //     let testAccount = await nodemailer.createTestAccount()
 
         //     let tra = await  
-
-
-
-
-              
+ 
         //     return res.status(202).json(createOtp)
 
         // }
@@ -86,10 +82,10 @@ let logIn = async function (req, res) {
 
         let token = jwt.sign({
             id: userDetail._id.toString()
-
         }, "secret-key-of-newton");
+
         res.setHeader("x-api-key", token);
-        return res.status(200).send({ status: true, message: "User login successfull", data: { userId: userDetail._id, token: token } })
+        return res.status(200).send({ status: true, message: "User login successfull", token})
 
     } catch (err) {
         console.log(err)
