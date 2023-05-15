@@ -2,7 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const route = require("./src/route")
 const dotenv = require("dotenv");
-dotenv.config()
+dotenv.config();
 
 const cors = require('cors'); 
 app.use(cors()) ;
@@ -12,9 +12,9 @@ app.use(express.json())
 mongoose.connect(process.env.DATABASESTRING, { useNewUrlParser: true }, mongoose.set('strictQuery', false))
 
     .then(() => console.log("MongoDb is connected"))
-    .catch((err) => console.log(err))
+    .catch((err) => console.log(err));
 
-app.use("/", route)
+app.use("/", route);
 
 
 
