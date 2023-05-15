@@ -4,8 +4,9 @@ const route = require("./src/route")
 const dotenv = require("dotenv");
 dotenv.config()
 
+const cors = require('cors'); 
+app.use(cors()) ;
 const app = express()
-
 app.use(express.json())
 
 mongoose.connect(process.env.DATABASESTRING, { useNewUrlParser: true }, mongoose.set('strictQuery', false))

@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import "./SignUpLogin.css"; // Import the CSS file for styling
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-let url = "http://localhost:3001";
+let url = 
+          // "http://localhost:3001";
+          "https://cointon-newtonmahata45.vercel.app";
 
 const SignUpLogin = () => {
 const navigate = useNavigate();
