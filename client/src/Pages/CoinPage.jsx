@@ -4,8 +4,10 @@ import { CryptoState } from "../CryptoContext";
 
 function CoinPage() {
   // const { currency, symbol, setCurrency } = CryptoState();
+ 
   return (
     <div>
+
       <div>
         <Header />
       </div>

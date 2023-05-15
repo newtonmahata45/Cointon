@@ -12,7 +12,7 @@ const Homepage = () => {
             <div>
                 <Header />
             </div>
-            <div className='banner' style={{  }}>
+            <div className='banner'>          
                 <Banner />
             </div>
             <div>

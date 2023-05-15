@@ -1,0 +1,316 @@
+/* .container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .drop {
+    width: 300px;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tabs {
+    display: flex;
+    margin-bottom: 16px;
+  }
+  
+  .tab {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    padding: 8px;
+    border-bottom: 2px solid #eee;
+  }
+  
+  .tab.active {
+    color: #000;
+    border-bottom: 3px solid #eb00d7;
+  }
+  
+  .form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    background-color: #9902ad;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+   */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:  sans-serif;
+}
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #eff0f4;
+}
+.background{
+  /* min-width: 50%; */
+  border: 1px solid;
+}
+.container {
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  /* border: 1px solid; */
+  width: 450px;
+  /* padding-right: 6%; */
+}
+.container .drop {
+  position: relative;
+  height: 350px;
+  width: 350px;
+  box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.05),
+  25px 35px 20px rgba(0, 0, 0, 0.05),
+  25px 30px 30px rgba(0, 0, 0, 0.05),
+  inset -20px -20px 25px rgba(255, 255, 255, 0.9);
+  transition: 0.5px;
+  display: flex;
+  justify-content: center;
+  border-radius: 46% 54% 32% 68% / 35% 36% 64% 65% ;
+  transition: all .25s ease-in-out;
+}
+.container .drop:hover {
+  border-radius: 50%;
+}
+.container .drop::before {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 85px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.9;
+}
+.container .drop::after {
+  content: "";
+  position: absolute;
+  top: 90px;
+  left: 110px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.9;
+}
+.container .drop .content{
+  /* border: 1px solid green; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: flex-end;
+  text-align: center;
+  padding: 20px 0;
+  /* gap: 15px; */
+  
+}
+.tabs{
+  /* border: 1px solid #b311e4; */
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  /* margin: 20px; */
+}
+
+.tabs .active {
+  display: flex;
+  align-items: center;
+  color: black;  
+  font-size: 1.1rem;
+  margin-right: 8rem;
+  pointer-events:none;
+}
+.tabs .inactiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  margin-right: -8.4rem;
+  background: #be00fda1;
+  color:#fff;
+  font-size: 8px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 10px 10px 10px rgba(190, 1, 254, 0.05),
+  15px 25px 10px rgba(190, 1, 254, 0.1),
+  15px 20px 20px rgba(190, 1, 254, 0.1),
+  inset -10px -10px 15px rgb(255, 255, 255,0.5);
+  border-radius: 44% 56% 65% 35% / 57% 58% 42% 43% ;
+  /* border: 1px solid blueviolet; */
+  transition: .25s;
+}
+.tabs .inactiv::before{
+  content: "";
+  position: absolute;
+  top: 30px;
+  background: #fff;
+  height: 15px;
+  width: 15px;
+  opacity: 0.45;
+  border-radius: 50%;
+}
+.tabs .inactiv:hover{
+  border-radius: 50%;
+  
+}
+.tabs .activ {
+  color:black;  
+  font-size: 1.2rem;
+  margin-right: 4rem;
+  margin-top: 2rem;
+  pointer-events:none;
+}
+.tabs .inactive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: -18rem;
+  font-size: 12px;
+  transition: all .4s ease-in-out;
+  height: 60px;
+  width: 60px;
+  background: #0083fda1;
+  color:#fff;
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: inset 10px 10px 10px rgba(190, 1, 254, 0.05),
+  12px 21px 8px rgba(1, 180, 255, 0.1),
+  12px 18px 16px rgba(1, 180, 255, 0.1),
+  inset -10px -10px 15px rgb(255, 255, 255,0.5);
+  border-radius: 44% 56% 65% 35% / 57% 58% 42% 43% ;
+  /* border: 1px solid blueviolet; */
+  /* transition: .25s; */
+
+}
+.tabs .inactive::before{
+  content: "";
+  position: absolute;
+  top: 25px;
+  /* left: 30px; */
+  background: #fff;
+  height: 15px;
+  width: 15px;
+  opacity: 0.45;
+  border-radius: 50%;
+}
+.tabs .inactive:hover{
+  border-radius: 50%;
+}
+.body .container .drop .content .form {
+  /* border: 1px solid salmon; */
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.body .container .drop .content .form .inputs {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.body .container .drop .content .form .input {
+  margin-bottom: 10px;
+}
+
+.container .drop .content .form  .input::before {
+  content: "";
+  position: absolute;
+  margin-top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 3px;
+  width:  75%;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.container .drop .content form input {
+  position: relative;
+  width: 225px;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+  inset -2px -5px 10px rgba(255, 255, 255, 1),
+  15px 15px 10px rgba(0, 0, 0, 0.05),
+  15px 10px 15px rgba(0, 0, 0, 0.025);
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  background: transparent;
+  height: 25px;
+  padding-left:25px ;
+}
+.container .drop .content .form input:focus{
+  background: rgb(245, 254, 255);
+}
+.container .drop .content .form  .input i{
+  color: #cfcfcf;
+  position: absolute;
+  padding-top: 5px;
+  right: 2%;
+  cursor: pointer;
+  height: 25px;
+  width: 15px;
+  border-radius: 2px 50% 50% 2px;
+}
+.container .drop .content .form button {
+  width: 100px;
+  height: 35px;
+  margin-bottom: 4%;
+  border: none;
+  border-radius: 20px;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+  15px 15px 10px rgba(0, 0, 0, 0.05),
+  15px 10px 15px rgba(0, 0, 0, 0.025);
+  background: #ff0f5b;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  transition: 0.28s;
+  cursor: pointer;
+}
+
+.container .drop .content .form button:hover{
+  width: 120px ;
+}
+
+.container .drop .content .form button::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.5);
+  height: 3px;
+  width: 30%;
+  border-radius:32px;
+  margin-top: -3px;
+} 
