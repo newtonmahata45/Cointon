@@ -6,10 +6,10 @@ import { useNavigate, useParams } from "react-router-dom";
 let url = "http://localhost:3001";
 
 const SignUpLogin = () => {
-const navigate = useNavigate();
-  if(localStorage.getItem("token")){
-    navigate(`/welcome`);
-  }
+  const navigate = useNavigate();
+    if(localStorage.getItem("token")){
+      navigate(`/welcome`);
+    }
   let { tab } = useParams();
   let up = tab == "in" ? false : true;
 

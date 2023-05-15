@@ -57,7 +57,7 @@
 }
 
 .text-muted{
-  color:var(--color-gray)
+  color: var(--color-gray)
 }
 
 /* ******************************** HOME ******************************** */
@@ -66,7 +66,6 @@
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment:fixed;
-
 }
 
 /* ******************* HEADER ************************ */
@@ -153,7 +152,6 @@ button:hover {
 .header  option{
   color: grey;
 }
-
 
 /* ******************* SEARCH BAR ************************ */
 
