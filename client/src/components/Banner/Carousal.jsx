@@ -39,12 +39,11 @@ const Carousal = () => {
         // // let result = await axios.get("https://api.coingecko.com/api/v3/coins/");
         // // let result = await axios.request(options);
         // // let data = result.data.data.coins
-        console.log(data)
+        console.log("Carousel Coin =>",data)
         setTranding(data)
     };
     useEffect(() => {
-        
-        console.log("Krishna");
+        console.log("Krishna")
         fetchTrandingCoins();
     }, [currency]);
 
@@ -73,7 +72,6 @@ const Carousal = () => {
             </div>
         )
     })
-
     const responsive = { 
         0: { items: 2 },
         512: { items: 4 }
@@ -88,12 +86,10 @@ const Carousal = () => {
                 disableDotsControls
                 disableButtonsControls
                 responsive={responsive}
-                
                 autoPlay
                 items={items}
             />
         </div>
-
     )
 }
 

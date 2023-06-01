@@ -54,7 +54,7 @@ let createTrade = async function (req, res) {
     }
 }
 
-let openTrade = async function (req, res) {
+let openTrades = async function (req, res) {
     try {
         let userId = req.loginUserId;
 
@@ -75,7 +75,6 @@ let tradeHistory = async function (req, res) {
         const filters = req.query;
 
         let userId = req.loginUserId;
-        
                                     //   .find({$nor: [{buyAt: null}]})
         let history = await tradeModel.find({ userId: userId, ...filters, $nor: [{ buyAt: null }, { sellAt: null }] })
         history.reverse()
@@ -238,7 +237,7 @@ let closeTrade = async function (req, res) {
 
 
 module.exports.createTrade = createTrade;
-module.exports.openTrade = openTrade;
+module.exports.openTrades = openTrades;
 module.exports.updateTrade = updateTrade;
 module.exports.crossUpdateTrade = crossUpdateTrade;
 module.exports.closeTrade = closeTrade;

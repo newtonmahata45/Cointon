@@ -47,7 +47,7 @@ function CoinsTable() {
     fetchCoins();
   }, [currency]);
 
-  console.log("FromTable =>", coins);
+  // console.log("FromTable =>", coins);
 
   // const customStyles = {
   //   rows: {
@@ -107,17 +107,16 @@ function CoinsTable() {
       >
         <h2
           style={{
-            background: "hsl(252, 30%, 95%)",
+            color: "var(--color-primary)",
             fontFamily: "monospace",
             padding: "0.5rem",
           }}
         >
-          
           Cryptocurrency Prices by Market Cap
         </h2>
         <table className="table">
           <thead>
-            <tr className="thead" >
+            <tr className="thead">
               <th>Coin</th>
               <th>Name</th>
               <th>Price</th>
@@ -128,7 +127,11 @@ function CoinsTable() {
           <tbody>
             {coins.map((each) => {
               return (
-                <tr className="table-row" onClick={() => navigate(`/coins/${each.id}`)} key={each.id} >
+                <tr
+                  className="table-row"
+                  onClick={() => navigate(`/coins/${each.id}`)}
+                  key={each.id}
+                >
                   <td>
                     <img
                       src={each.image}
@@ -136,7 +139,7 @@ function CoinsTable() {
                       style={{ height: "2.5rem", borderRadius: "50%" }}
                     />
                   </td>
-                  <td className="table-coin-name" > {each.name} </td>
+                  <td className="table-coin-name"> {each.name} </td>
                   <td>
                     {symbol} {numberWithCommas(each.current_price.toFixed(2))}
                   </td>

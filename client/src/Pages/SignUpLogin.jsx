@@ -1,22 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./SignUpLogin.css"; // Import the CSS file for styling
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-let url = 
-          // "http://localhost:3001";
-          "https://cointon-newtonmahata45.vercel.app";
+let url = "https://cointon-newtonmahata45.vercel.app"; 
+          //"http://localhost:3001";
 
 const SignUpLogin = () => {
-const navigate = useNavigate();
-  if(localStorage.getItem("token")){
-    navigate(`/welcome`);
-  }
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) navigate(`/welcome`);
+  // }, []);
   let { tab } = useParams();
   let up = tab == "in" ? false : true;
 
-  const [isSignUp, setIsSignUp] = useState(up); // State to toggle between sign up and login
-
+  const [isSignUp, setIsSignUp] = useState(up); // State to toggle between sign up and login;
   const [user, setUser] = useState({
     name: "",
     phone: "",
@@ -24,11 +23,11 @@ const navigate = useNavigate();
     password: "",
     referCode: "",
   });
+  const [eye, setEye] = useState(true);
 
   const handleTabToggle = () => {
     setIsSignUp(!isSignUp);
   };
-  const [eye, setEye] = useState(true);
   const handleEye = () => {
     setEye(!eye);
   };
@@ -36,8 +35,6 @@ const navigate = useNavigate();
   async function submit(e) {
     e.preventDefault();
     const { name, phone, email, password, referCode } = user;
-    // console.log("bo", user);
-    // const res = await axios.post(`${url}register`,{name, phone, email, password, referCode})
     if (isSignUp) {
       try {
         const res = await axios.post(`${url}/register`, {
@@ -68,32 +65,35 @@ const navigate = useNavigate();
             referCode: "",
           });
           handleTabToggle();
+        }else{
+          window.alert(err.response.data.message);
         }
       } catch (err) {
-        console.log("result",err.response.data.message);
-        window.alert(err.response.data.message);
+        console.log("the signup error =>", err);
+        err.response ? window.alert(err.response.data.message): window.alert(err.message);
       }
     } else {
       // When Login button Clicked
-      console.log("headd");
-      try{
-      const res = await axios.post(`${url}/login`, { email, password });
-      // const res = await fetch(`${url}login`, {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ email, password }),
-      // });
-      // const loginUser = await res.json();
+      console.log("Login button Clicked");
+      try {
+        const res = await axios.post(`${url}/login`, { email, password });
+        // const res = await fetch(`${url}login`, {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify({ email, password }),
+        // });
+        // const loginUser = await res.json();
 
-      console.log("login responce=>", res.status);
+        console.log("login responce=>", res);
 
-      if (res.data.token) {
-        localStorage.setItem("token", JSON.stringify(res.data.token));
-        navigate(`/welcome`);
-      }
-     }catch(err) {
-        console.log("the login error =>",err.response.data.message);
-        window.alert(err.response.data.message);
+        if (res.data.token) {
+          localStorage.setItem("token", res.data.token);
+          window.alert("login successfull");
+          navigate(`/welcome`);
+        }
+      } catch (err) {
+        console.log("the login error =>", err);
+        err.response ? window.alert(err.response.data.message): window.alert(err.message);
       }
     }
   }

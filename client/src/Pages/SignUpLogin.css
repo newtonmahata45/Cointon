@@ -52,12 +52,7 @@
   }
    */
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family:  sans-serif;
-}
+
 .body {
   display: flex;
   justify-content: center;
@@ -65,20 +60,16 @@
   min-height: 100vh;
   background: #eff0f4;
 }
-.background{
-  /* min-width: 50%; */
-  border: 1px solid;
-}
-.container {
+.body .container {
   position: relative;
   display: flex;
   justify-content: start;
   align-items: center;
-  /* border: 1px solid; */
-  width: 450px;
+  width: 350px;
+  /* border: 1px solid blueviolet; */
   /* padding-right: 6%; */
 }
-.container .drop {
+.body .container .drop {
   position: relative;
   height: 350px;
   width: 350px;
@@ -86,16 +77,15 @@
   25px 35px 20px rgba(0, 0, 0, 0.05),
   25px 30px 30px rgba(0, 0, 0, 0.05),
   inset -20px -20px 25px rgba(255, 255, 255, 0.9);
-  transition: 0.5px;
   display: flex;
   justify-content: center;
   border-radius: 46% 54% 32% 68% / 35% 36% 64% 65% ;
   transition: all .25s ease-in-out;
 }
-.container .drop:hover {
+.body .container .drop:hover {
   border-radius: 50%;
 }
-.container .drop::before {
+.body .container .drop::before {
   content: "";
   position: absolute;
   top: 50px;
@@ -106,7 +96,7 @@
   background: #fff;
   opacity: 0.9;
 }
-.container .drop::after {
+.body .container .drop::after {
   content: "";
   position: absolute;
   top: 90px;
@@ -117,7 +107,7 @@
   background: #fff;
   opacity: 0.9;
 }
-.container .drop .content{
+.body .container .drop .content{
   /* border: 1px solid green; */
   position: relative;
   display: flex;
@@ -129,7 +119,7 @@
   /* gap: 15px; */
   
 }
-.tabs{
+.drop .content .tabs{
   /* border: 1px solid #b311e4; */
   width: 100%;
   display: flex;
@@ -137,7 +127,7 @@
   /* margin: 20px; */
 }
 
-.tabs .active {
+.drop .content .tabs .active {
   display: flex;
   align-items: center;
   color: black;  
@@ -145,7 +135,7 @@
   margin-right: 8rem;
   pointer-events:none;
 }
-.tabs .inactiv {
+.drop .content .tabs .inactiv {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,7 +155,7 @@
   /* border: 1px solid blueviolet; */
   transition: .25s;
 }
-.tabs .inactiv::before{
+.drop .content .tabs .inactiv::before{
   content: "";
   position: absolute;
   top: 30px;
@@ -175,18 +165,18 @@
   opacity: 0.45;
   border-radius: 50%;
 }
-.tabs .inactiv:hover{
+.drop .content .tabs .inactiv:hover{
   border-radius: 50%;
   
 }
-.tabs .activ {
+.drop .content .tabs .activ {
   color:black;  
   font-size: 1.2rem;
   margin-right: 4rem;
   margin-top: 2rem;
   pointer-events:none;
 }
-.tabs .inactive {
+.drop .content .tabs .inactive {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -209,7 +199,7 @@
   /* transition: .25s; */
 
 }
-.tabs .inactive::before{
+.drop .content .tabs .inactive::before{
   content: "";
   position: absolute;
   top: 25px;
@@ -220,7 +210,7 @@
   opacity: 0.45;
   border-radius: 50%;
 }
-.tabs .inactive:hover{
+.drop .content .tabs .inactive:hover{
   border-radius: 50%;
 }
 .body .container .drop .content .form {
@@ -242,7 +232,7 @@
   margin-bottom: 10px;
 }
 
-.container .drop .content .form  .input::before {
+.body .container .drop .content .form  .input::before {
   content: "";
   position: absolute;
   margin-top: 6px;
@@ -254,7 +244,7 @@
   background: rgba(255, 255, 255, 0.5);
 }
 
-.container .drop .content form input {
+.body .container .drop .content form input {
   position: relative;
   width: 225px;
   box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
@@ -268,10 +258,10 @@
   height: 25px;
   padding-left:25px ;
 }
-.container .drop .content .form input:focus{
+.body .container .drop .content .form input:focus{
   background: rgb(245, 254, 255);
 }
-.container .drop .content .form  .input i{
+.body .container .drop .content .form  .input i{
   color: #cfcfcf;
   position: absolute;
   padding-top: 5px;
@@ -281,7 +271,7 @@
   width: 15px;
   border-radius: 2px 50% 50% 2px;
 }
-.container .drop .content .form button {
+.body .container .drop .content .form button {
   width: 100px;
   height: 35px;
   margin-bottom: 4%;
@@ -299,11 +289,11 @@
   cursor: pointer;
 }
 
-.container .drop .content .form button:hover{
+.body .container .drop .content .form button:hover{
   width: 120px ;
 }
 
-.container .drop .content .form button::before{
+.body .container .drop .content .form button::before{
   content: "";
   position: absolute;
   left: 50%;

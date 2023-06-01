@@ -23,7 +23,7 @@ let updateFund = async function (req, res) {
 
         let updateFund = await userModel.findByIdAndUpdate( userId , { $inc: { fund:addFund } }, { new: true })
 
-        return res.status(200).send({status:true,fund:updateFund.fund} )
+        return res.status(200).send({status:true, message:"success", fund:updateFund.fund} )
     } catch (err) {
         console.log(err)
         return res.status(500).send({ status: false, message: err.message })

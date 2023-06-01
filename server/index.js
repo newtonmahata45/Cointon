@@ -1,21 +1,25 @@
-const express = require("express")
-const mongoose = require("mongoose")
-const route = require("./src/route")
+const express = require("express");
+const mongoose = require("mongoose");
+const route = require("./src/route");
 const dotenv = require("dotenv");
+const multer = require("multer");
+const cors = require('cors');
+
+const app = express();
+
+app.use(express.json());
+
 dotenv.config();
 
-const app = express()
-app.use(express.json())
-const cors = require('cors'); 
+app.use(multer().any());
+
 app.use(cors());
 
 mongoose.connect(process.env.DATABASESTRING, { useNewUrlParser: true }, mongoose.set('strictQuery', false))
-
     .then(() => console.log("MongoDb is connected"))
     .catch((err) => console.log(err));
 
 app.use("/", route);
-
 
 
 app.use((request, response) => {

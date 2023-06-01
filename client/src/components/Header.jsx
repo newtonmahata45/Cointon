@@ -11,6 +11,7 @@ const Header = () => {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
   // const [loding,setLoding] = useState(false);
+  const navigate = useNavigate();
 
   const fetchCoins = async () => {
     // setLoding(true);
@@ -21,7 +22,7 @@ const Header = () => {
     // setLoding(false);
   };
 
-  console.log("coins=>", coins);
+  // console.log("header coins=>", coins);
 
   const searchFilter = () => {
     if (!search) return [];
@@ -36,23 +37,40 @@ const Header = () => {
     fetchCoins();
   }, [search, currency]);
 
-  const navigate = useNavigate()
+  function sign(e) {
+    if(localStorage.getItem("token")) {
+      window.alert("already loged in")
+      navigate(`/welcome`)
+    }
+    else if(e) navigate(`/sign/in`);
+    else  navigate(`/sign/up`);
+  }
+
   return (
-      <header className="header">
-        <div className="container">
-          <Link className="logo" to={"/"}>
+    <header className="header">
+      <div className="container">
+        <Link to={"/"} className="homelink">
+          <img src="../cointonlogo3.png" className="logoimg" />
+          <div className="logoname">
             <h1>Cointon</h1>
             <h1> Cointon</h1>
-          </Link>
+          </div>
+        </Link>
+        <div className="menu">
+          <a href="#home" className="active">
+            Home
+          </a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div className="input-section">
           <div className="search-bar">
-            <i
-              className="fa fa-search"
-              style={{ color: "var(--color-primary)" }}
-            ></i>
+            <i className="fa fa-search"></i>
             <input
               type="search"
-              placeholder="Search coins here"
+              placeholder="Search coins"
               className="search-input"
+              id="search-input"
               value={search}
               onChange={(e) => setSearch(e.target.value.toLowerCase())}
             />
@@ -65,35 +83,46 @@ const Header = () => {
             <option value={"USD"}>$ USD</option>
             <option value={"INR"}>₹ INR</option>
           </select>
-          <div className="sign">
-            <button className="btn btn-primary sign-btn login" onClick={()=>navigate(`/sign/in`)} >LogIn</button>
-            <button className="btn btn-primary sign-btn signup" onClick={()=>navigate(`/sign/up`)} >SignUp</button>
-          </div>
         </div>
+        <div className="sign">
+          <button
+            className="btn btn-primary sign-btn login"
+            onClick={() => sign(true)}
+          >
+            LogIn
+          </button>
+          <button
+            className="btn btn-primary sign-btn signup"
+            onClick={() => sign(true)}
+          >
+            SignUp
+          </button>
+        </div>
+      </div>
 
-        <div className="search-filter">
-          {searchFilter().map((each) => {
-            // const profit = each.price_change_percentage_24h >= 0;
-            return (
-              <Link to={`/coins/${each.id}`} className="coin-bar" key={each.id}>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <img
-                    src={each.image}
-                    alt={each.name}
-                    style={{ height: "2.7rem", borderRadius: "50%" }}
-                  />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <span>{each.symbol.toUpperCase()}</span>
-                </div>
-                <div>{each.name}</div>
-                <div>
-                  {symbol} {numberWithCommas(each.current_price.toFixed(2))}
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      </header>
+      <div className="search-filter">
+        {searchFilter().map((each) => {
+          // const profit = each.price_change_percentage_24h >= 0;
+          return (
+            <Link to={`/coins/${each.id}`} className="coin-bar" key={each.id}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <img
+                  src={each.image}
+                  alt={each.name}
+                  style={{ height: "2.7rem", borderRadius: "50%" }}
+                />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>{each.symbol.toUpperCase()}</span>
+              </div>
+              <div>{each.name}</div>
+              <div>
+                {symbol} {numberWithCommas(each.current_price.toFixed(2))}
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+    </header>
   );
 };
 

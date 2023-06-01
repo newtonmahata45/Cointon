@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { registerUser, logIn, getProfile, favorite } = require("./controller/userController")
 const { getFund, updateFund } = require("./controller/fundController")
-const { createTrade, openTrade, updateTrade,crossUpdateTrade, closeTrade,tradeHistory } = require("./controller/tradeController")
+const { createTrade, openTrades, updateTrade,crossUpdateTrade, closeTrade,tradeHistory } = require("./controller/tradeController")
 const { authenticate } = require("./auth")
 
 
@@ -22,13 +22,11 @@ router.put("/updatefund", authenticate, updateFund);   //give -ve value for with
 
 // // ****************************** TRADES ***************************
 router.post("/createtrade", authenticate, createTrade);    //{ (buyAt || sellAt), leverage, quantity, symbol }
-router.get("/opentrade", authenticate, openTrade);
+router.get("/opentrade", authenticate, openTrades);
 router.put("/updatetrede", authenticate, updateTrade)       // { (buyAt || sellAt), quantity, symbol }
 router.put("/crossupdatetrade", authenticate, crossUpdateTrade)  // { (buyAt || sellAt),  quantity, symbol }
 router.put("/closetrade", authenticate, closeTrade);     // { priceAt, symbol }
 router.get("/history", authenticate, tradeHistory);     // Query Params
-
-
 
 
 module.exports = router;
