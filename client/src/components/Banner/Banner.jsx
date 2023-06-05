@@ -1,5 +1,5 @@
 import React from 'react';
-import Carousal from './carousal';
+import Carousal from './Carousal';
 
 const Banner = () => {
   return (
