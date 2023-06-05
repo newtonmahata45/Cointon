@@ -4,7 +4,7 @@ import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
 // import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
-import { numberWithCommas } from "./Banner/carousal";
+import { numberWithCommas } from "./Banner/Carousal";
 
 function CoinsTable() {
   const [coins, setCoins] = useState([]);
