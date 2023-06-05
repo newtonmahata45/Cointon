@@ -5,7 +5,7 @@ import axios from "axios";
 import { CoinList } from "../config/api";
 import { numberWithCommas } from "./Banner/carousal";
 
-const Header = () => {
+const Header = ({userProfile}) => {
   const { currency, symbol, setCurrency } = CryptoState();
 
   const [coins, setCoins] = useState([]);
@@ -38,12 +38,11 @@ const Header = () => {
   }, [search, currency]);
 
   function sign(e) {
-    if(localStorage.getItem("token")) {
-      window.alert("already loged in")
-      navigate(`/welcome`)
-    }
-    else if(e) navigate(`/sign/in`);
-    else  navigate(`/sign/up`);
+    if (localStorage.getItem("token")) {
+      window.alert("already loged in");
+      navigate(`/welcome`);
+    } else if (e) navigate(`/sign/in`);
+    else navigate(`/sign/up`);
   }
 
   return (
@@ -84,20 +83,27 @@ const Header = () => {
             <option value={"INR"}>₹ INR</option>
           </select>
         </div>
-        <div className="sign">
-          <button
-            className="btn btn-primary sign-btn login"
-            onClick={() => sign(true)}
-          >
-            LogIn
-          </button>
-          <button
-            className="btn btn-primary sign-btn signup"
-            onClick={() => sign(true)}
-          >
-            SignUp
-          </button>
-        </div>
+        {localStorage.getItem("token") ? (
+          <div className="profile-section">
+            <img src={(userProfile && userProfile.profileImage)||"../defaultprofileimg.png"} alt="profile-img"></img>
+            <p>{userProfile && userProfile.name}</p>
+          </div>
+        ) : (
+          <div className="sign">
+            <button
+              className="btn btn-primary sign-btn login"
+              onClick={() => sign(true)}
+            >
+              LogIn
+            </button>
+            <button
+              className="btn btn-primary sign-btn signup"
+              onClick={() => sign(true)}
+            >
+              SignUp
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="search-filter">

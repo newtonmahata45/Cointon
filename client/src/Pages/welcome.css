@@ -1,17 +1,33 @@
 
 .welcome{
   display: block;
-  align-items: start;
-  justify-content: center;
   width: 100%;
+  height: 100%;
   background-color:var(--color-light);
   font-family: "Poppins",sans-serif;
 }
-.welcome .navbar{
-  border: 1px solid red;
-  padding-right: 6%;
+.welcome .navbar {
+  /* border:1px solid red; */
+  height: 4rem;
+  background-color: var(--color-white);
+  /* width: 80%; */
 }
-.welcome .navbar nav{
+.welcome .navbar .header{
+  height: 4rem;
+  width: 80%;
+  background-color: var(--color-white);
+  margin-left: 10%;
+}
+.welcome .navbar .header .container{
+  /* border:1px solid rgb(9, 255, 0); */
+  height: 99%;
+  width: 100%;
+}
+.welcome .navbar .header .menu{
+  /* display:none; */
+  visibility: hidden;
+}
+/* .welcome .navbar nav{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,13 +37,34 @@
 }
 .welcome nav .logo h1{
   font-size: 30px;
+} */
+.welcome .navbar .search-bar i{
+  color: blue;
+  /* background-color: var(--color-primary); */
 }
-.welcome nav .profile{
+.welcome .navbar .input-section{
+  /* border: 1px solid dodgerblue; */
+  display: flex;
+  width: 30%
+}
+.welcome .navbar .profile-section{
+  color: dodgerblue;
+}
+.welcome .navbar .search-bar input{
+  color:blueviolet
+}
+/* .welcome nav .profile{
   margin-right: 7%;
-  
-}
+  border: 1px solid dodgerblue;
+  height: 100%;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  gap:10px;
+} */
 .welcome .content{
   /* border: 1px solid rgb(0, 0, 0); */
+  margin-top: 10px;
   width: 100%;
   display: flex;
   align-items: start;
@@ -42,6 +79,7 @@
   padding: 20px 14px;
   z-index: 10;
   transition: all .5s ease;
+  position:fixed;
 }
 
 /* .welcome .content .menu ul{
@@ -114,6 +152,7 @@
 .welcome .content .main {
   /* border: 1px solid rebeccapurple;   */
   min-height: 85vh;
-  background-color: whitesmoke;
+  background-color: rgb(187, 208, 247);
+  margin-left:260px;
 }
 

@@ -80,7 +80,7 @@ let logIn = async function (req, res) {
 let getProfile = async function (req, res) {
     try {
         let userId = req.loginUserId;
-        let userData = await userModel.findById(userId);
+        let userData = await userModel.findById(userId).select({password:0});
         if(!userData) return res.status(404).send({ status: false, message: "user not found" });
         return res.status(200).send({ status: true, message: "success", userDetail: userData })
     }

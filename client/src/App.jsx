@@ -22,7 +22,8 @@ function App() {
           <Route path='/sign/:tab' Component = { SignUpLogin } />
           <Route path='/welcome' Component = { WelcomePage } />
         </Routes>
-    </BrowserRouter> //: <h1  style={{background:"orange",height:"100vh", padding:"25% 0 0 25%"}}>Cheak your Internet Connection</h1>
+    </BrowserRouter>
+     //: <h1  style={{background:"orange",height:"100vh", padding:"25% 0 0 25%"}}>Cheak your Internet Connection</h1>
   )
 }
 

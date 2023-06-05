@@ -16,8 +16,8 @@ const Homepage = () => {
       if (!localStorage.getItem("token")) return navigate(`/sign/in`);
       
       let userProfile = await axios.get(`${url}/profile`, { headers: { "x-api-key": localStorage.getItem("token") }});
-      
-      navigate(`/welcome`, { state: userProfile });
+      console.log("profile=>",userProfile.data.userDetail)
+      navigate(`/welcome`, { state: userProfile.data.userDetail });
     } catch (err) {
         err.response ? window.alert(err.response.data.message): window.alert(err.message);
     }
@@ -49,7 +49,7 @@ const Homepage = () => {
         </div>
       </div>
       <div className="banner">
-        <Banner />
+        {/* <Banner /> */}
       </div>
       <div>
         <button onClick={() => color("green")}>green color</button>
@@ -122,7 +122,7 @@ const Homepage = () => {
         voluptatem repellat nobis libero soluta similique deleniti sint
         explicabo quisquam eligendi temporibus sequi nesciunt.
       </p>
-      <CoinsTable />
+      // <CoinsTable />
     </div>
   );
 };
