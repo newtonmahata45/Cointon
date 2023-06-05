@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
 import axios from "axios";
 import { CoinList } from "../config/api";
-import { numberWithCommas } from "./Banner/Carousel";
+import { numberWithCommas } from "./Banner/Carousal";
 
 const Header = ({userProfile}) => {
   const { currency, symbol, setCurrency } = CryptoState();
