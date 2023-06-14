@@ -132,6 +132,7 @@ const Header = ({userProfile}) => {
 
 export default Header;
 
+
 // mongodb+srv://read_only:OxxrqgRYA1PFs0tf@cluster0.k52jp.mongodb.net/ip
 
 // db.balls.aggregate([{$match: {extras_type: "NA"}},{$group: {_id: "$batsman",totalBalls: { $sum: 1 },totalRuns: { $sum: "$batsman_runs" }}},{$addFields: {strikeRate: { $multiply: [{ $divide: ["$totalRuns", "$totalBalls"] }, 100]}}},{$sort: {strikeRate: -1}}]);
