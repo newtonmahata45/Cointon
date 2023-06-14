@@ -25,8 +25,6 @@ function Dashboard({userProfile}) {
   }, [currency]);
   return (
     <div className='dashboard'>
-      {/* <h3>Dashboard component</h3> */}
-      {userProfile && userProfile.name}
 	  <div className="landing">
         <TradingViewWidget/>
 	    <section> 

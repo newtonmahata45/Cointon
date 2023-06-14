@@ -83,8 +83,8 @@ const Header = ({userProfile}) => {
         </div>
         {localStorage.getItem("token") ? (
           <div className="profile-section">
-            <img src={(userProfile && userProfile.profileImage)||"../defaultprofileimg.png"} alt="profile-img"></img>
-            <p>{userProfile && userProfile.name}</p>
+            <img src={(userProfile && userProfile.profileImage) ? userProfile.profileImage:"../defaultprofileimg.png"} alt="profile-img"></img>
+            <p>{userProfile ? userProfile.name:""}</p>
           </div>
         ) : (
           <div className="sign">

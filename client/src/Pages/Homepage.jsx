@@ -54,7 +54,7 @@ const Homepage = () => {
         <button onClick={() => color("orange")}>orange color</button>
         <button onClick={() => color("blue")}>blue color</button>
       </div>
-      <p>
+      {/* <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus
         possimus magnam distinctio nostrum esse iste, natus voluptatem repellat
         nobis libero soluta similique deleniti sint explicabo quisquam eligendi
@@ -118,7 +118,7 @@ const Homepage = () => {
         elit. Repellendus possimus magnam distinctio nostrum esse iste, natus
         voluptatem repellat nobis libero soluta similique deleniti sint
         explicabo quisquam eligendi temporibus sequi nesciunt.
-      </p>
+      </p> */}
 	   {/* <CoinsTable /> */}
        
     </div>
