@@ -1,11 +1,10 @@
 import React,{useState,useEffect} from 'react';
-import Banner from './Banner/Banner';
 import CoinsTable from './CoinsTable';
 import { CryptoState } from "../CryptoContext";
 import { CoinList } from "../config/api";
 import "../style/dashboard.css"
-import Carousal from './Banner/carousal';
 import TradingViewWidget from './TradingViewWidget';
+import Carousal from './Banner/Carousal';
 
 
 
