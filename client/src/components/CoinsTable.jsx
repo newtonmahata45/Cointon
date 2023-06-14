@@ -4,7 +4,7 @@ import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
 // import DataTable from "react-data-table-component";
 import { useNavigate } from "react-router-dom";
-import { numberWithCommas } from "./Banner/carousal";
+import { numberWithCommas } from "./Banner/Carousal";
 
 function CoinsTable() {
   const [coins, setCoins] = useState([]);
@@ -99,9 +99,10 @@ function CoinsTable() {
       <div
         style={{
           textAlign: "center",
-          marginTop: "2rem",
+          margin: "5%",
           display: "flex",
           flexDirection: "column",
+          width: "72vw"
           // alignItems: "center",
         }}
       >
@@ -116,7 +117,7 @@ function CoinsTable() {
         </h2>
         <table className="table">
           <thead>
-            <tr className="thead">
+            <tr>
               <th>Coin</th>
               <th>Name</th>
               <th>Price</th>
@@ -131,16 +132,19 @@ function CoinsTable() {
                   className="table-row"
                   onClick={() => navigate(`/coins/${each.id}`)}
                   key={each.id}
+                  style={{ height: "35px" }}
                 >
                   <td>
                     <img
                       src={each.image}
-                      alt={each.name}
-                      style={{ height: "2.5rem", borderRadius: "50%" }}
+                      alt={""}
+                      style={{ height: "35px", borderRadius: "50%" }}
                     />
+                    <span>{each.symbol.toUpperCase()}</span>
                   </td>
                   <td className="table-coin-name"> {each.name} </td>
                   <td>
+                    {" "}
                     {symbol} {numberWithCommas(each.current_price.toFixed(2))}
                   </td>
                   <td>{each.price_change_percentage_24h.toFixed(2)} %</td>

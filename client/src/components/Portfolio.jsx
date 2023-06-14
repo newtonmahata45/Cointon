@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
-function Portfolio({userProfile}) {
+function Portfolio({ userProfile }) {
   return (
     <div>
       <h3>Portfolio component</h3>
-      {userProfile.name}
+      {userProfile ? userProfile.name :""}
     </div>
-  )
+  );
 }
 
-export default Portfolio
+export default Portfolio;

@@ -56,9 +56,7 @@ const Header = ({userProfile}) => {
           </div>
         </Link>
         <div className="menu">
-          <a href="#home" className="active">
-            Home
-          </a>
+          <a href="#home" className="active">Home</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
@@ -104,8 +102,8 @@ const Header = ({userProfile}) => {
             </button>
           </div>
         )}
-      </div>
-
+      </div> 
+	<div style={{width:"100%",background:`${search ? "rgba(0,0,0,0.5)" : "none"}`,minHeight:`${search ? "100vh" : "0"}`}}>
       <div className="search-filter">
         {searchFilter().map((each) => {
           // const profit = each.price_change_percentage_24h >= 0;
@@ -114,7 +112,6 @@ const Header = ({userProfile}) => {
               <div style={{ display: "flex", alignItems: "center" }}>
                 <img
                   src={each.image}
-                  alt={each.name}
                   style={{ height: "2.7rem", borderRadius: "50%" }}
                 />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -128,6 +125,7 @@ const Header = ({userProfile}) => {
           );
         })}
       </div>
+	  </div>
     </header>
   );
 };

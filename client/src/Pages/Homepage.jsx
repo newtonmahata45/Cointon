@@ -42,10 +42,7 @@ const Homepage = () => {
               and fast with us.
             </article>
           </div>
-          <button className="get-started" onClick={getStart}>
-            {" "}
-            Get Started{" "}
-          </button>
+          <button className="get-started" onClick={getStart}> Get Started </button>
         </div>
       </div>
       <div className="banner">
@@ -122,7 +119,8 @@ const Homepage = () => {
         voluptatem repellat nobis libero soluta similique deleniti sint
         explicabo quisquam eligendi temporibus sequi nesciunt.
       </p>
-      // <CoinsTable />
+	   {/* <CoinsTable /> */}
+       
     </div>
   );
 };
