@@ -25,14 +25,16 @@ function Dashboard({userProfile}) {
   }, [currency]);
   return (
     <div className='dashboard'>
+	<Carousal/>
 	  <div className="landing">
+	  
         <TradingViewWidget/>
 	    <section> 
 			<div className="top-gainers">
 				<h4>Top Gainers</h4>
 				{coins.sort((a,b) => b.price_change_percentage_24h - a.price_change_percentage_24h).map((each)=>{
 					return (
-					<div key={each.id}>{each.name} {each.price_change_percentage_24h}</div>
+					<div key={each.id}> <span>{each.name}</span> <span>{each.price_change_percentage_24h.toFixed(2)}%</span></div>
 					)
 				}).splice(0,5)}
 			</div>
@@ -40,7 +42,7 @@ function Dashboard({userProfile}) {
 				<h4>Top Loosers</h4>
 				{coins.sort((a,b) => a.price_change_percentage_24h - b.price_change_percentage_24h).map((each)=>{
 					return (
-					<div key={each.id}>{each.name} {each.price_change_percentage_24h}</div>
+					<div key={each.id}><span>{each.name}</span> <span>{each.price_change_percentage_24h.toFixed(2)}%</span></div>
 					)
 				}).splice(0,5)}
 			</div>
@@ -48,7 +50,7 @@ function Dashboard({userProfile}) {
 		</section>
 	  
 	  </div>
-      <Carousal/>
+      
       <CoinsTable />
     </div>
   )

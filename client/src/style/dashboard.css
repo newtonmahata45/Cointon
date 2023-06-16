@@ -7,6 +7,14 @@
 	min-width: 810px;
 	border:2px solid maroon;
 }
+.dashboard section{
+	height:100%;
+}
+.dashboard section div div{
+	display:flex;
+	justify-content:space-between;
+	margin-bottom:0.5rem;
+}
 .dashboard Carousal{
 	background: red;
 }
