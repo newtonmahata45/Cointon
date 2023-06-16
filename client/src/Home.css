@@ -325,8 +325,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* gap: 0.3%; */
-  border: 1px solid cyan;
 }
 .header .container .profile-section img {
   height: 3rem;
