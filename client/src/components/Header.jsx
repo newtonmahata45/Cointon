@@ -112,8 +112,7 @@ const Header = ({userProfile}) => {
               <div style={{ display: "flex", alignItems: "center" }}>
                 <img
                   src={each.image}
-                  style={{ height: "2.7rem", borderRadius: "50%" }}
-                />
+                  style={{ height: "2.7rem", borderRadius: "50%" }}/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>{each.symbol.toUpperCase()}</span>
               </div>

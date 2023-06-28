@@ -39,7 +39,7 @@ function Dashboard({userProfile}) {
 				}).splice(0,5)}
 			</div>
 			<div className="top-loosers" >
-				<h4>Top Loosers</h4>
+				<h4> Top Loosers</h4>
 				{coins.sort((a,b) => a.price_change_percentage_24h - b.price_change_percentage_24h).map((each)=>{
 					return (
 					<div key={each.id}><span>{each.name}</span> <span>{each.price_change_percentage_24h.toFixed(2)}%</span></div>

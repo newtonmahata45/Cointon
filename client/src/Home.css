@@ -325,8 +325,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* gap: 0.3%; */
+  gap: 10%; 
+  /*
   border: 1px solid cyan;
+  */
 }
 .header .container .profile-section img {
   height: 3rem;
@@ -399,7 +401,7 @@ button:hover {
   display: none;
 } */
 .home .landing {
-  height: 100vh;
+  height: 675px;
   display: flex;
   align-items: center;
   /* border:1px solid yellow; */
@@ -505,9 +507,9 @@ button:hover {
 /* ************************ CAROUSEL ******************************** */
 
 .carousel {
-  border: 1px solid yellow;
-
-  /*border:1px solid ;*/
+	height:8rem;
+	display:flex;
+	align-items:center;
 }
 
 .corousel-item {
@@ -517,22 +519,21 @@ button:hover {
   cursor: pointer;
   text-transform: uppercase;
   width: 10rem;
-  /* margin-left: 3rem; */
+  justify-content:end;
   text-decoration-line: none;
-  /* margin-top: 1rem; */
+  margin-left: 20%;
 }
 
 .corousel-item img {
-  /* box-shadow: 0 0 30px var(--color-primary); */
+  /* box-shadow: 0 0 30px var(--color-primary);*/
   border-radius: 50%;
-  height: 5rem;
-  margin-top: 3rem;
-  /* background: rgba(255, 255, 255, 0.363) ; */
+  height: 5rem; 
 }
 
 .corousel-item span {
   /* background: rgba(255, 255, 255, 0.397) ; */
   text-shadow: 0 0 10px var(--color-white);
+  color:black;
 }
 
 

@@ -15,9 +15,7 @@ function WelcomePage() {
   const { currency, symbol, setCurrency } = CryptoState();
   const navigate = useNavigate();
   const userProfile = useLocation().state;
-  const [activComponent, setActiveComponent] = useState(
-    <Dashboard userProfile={userProfile} />
-  );
+  const [activComponent, setActiveComponent] = useState(<Dashboard userProfile={userProfile} />);
 
   console.log("props =>", userProfile);
   // console.log("activComponent  =>",activComponent)
@@ -32,12 +30,14 @@ function WelcomePage() {
     navigate("/");
     window.alert("logout successfull");
   }
-
+	function checked(){
+		console.log("cheaking...")
+	}
   // function active(e) {
   //   setActiveComponent(e.target.value);
   // }
   return (
-    <div className="welcome">
+    <div className="welcome" onClick={checked()}>
       <nav className="navbar">
         <Header userProfile={userProfile}/>
         {/* <nav> 
