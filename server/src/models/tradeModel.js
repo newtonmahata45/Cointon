@@ -10,7 +10,7 @@ const tradeSchema = new mongoose.Schema({
     sellAt: { type: Number, default: null },
     leverage: { type: Number, default: 1 },
     quantity: { type: Number, default: 1 },
-    isShorted: {type:Boolean, default: false}
+    // isShorted: {type:Boolean, default: false}
 }, { timestamps: true })
 
 

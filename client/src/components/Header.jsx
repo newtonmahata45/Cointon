@@ -5,13 +5,16 @@ import axios from "axios";
 import { CoinList } from "../config/api";
 import { numberWithCommas } from "./Banner/Carousal";
 
-const Header = ({userProfile}) => {
+const Header = ({theUser}) => {
+  const navigate = useNavigate();
+  
   const { currency, symbol, setCurrency } = CryptoState();
 
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
   // const [loding,setLoding] = useState(false);
-  const navigate = useNavigate();
+
+  console.log("theUser=>",theUser)
 
   const fetchCoins = async () => {
     // setLoding(true);
@@ -83,8 +86,8 @@ const Header = ({userProfile}) => {
         </div>
         {localStorage.getItem("token") ? (
           <div className="profile-section">
-            <img src={(userProfile && userProfile.profileImage) ? userProfile.profileImage:"../defaultprofileimg.png"} alt="profile-img"></img>
-            <p>{userProfile ? userProfile.name:""}</p>
+            <img src={(theUser && theUser.profileImage) ? theUser.profileImage:"../defaultprofileimg.png"} alt="profile-img"></img>
+            {theUser && <p> {theUser.name}</p>}
           </div>
         ) : (
           <div className="sign">
@@ -96,7 +99,7 @@ const Header = ({userProfile}) => {
             </button>
             <button
               className="btn btn-primary sign-btn signup"
-              onClick={() => sign(true)}
+              onClick={() => sign(false)}
             >
               SignUp
             </button>

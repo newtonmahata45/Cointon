@@ -359,6 +359,13 @@
   box-shadow: 0 0 20px var(--color-primary);
 }
 
+.home .header .container .profile-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color:white
+}
+
 button:hover {
   color: white;
   box-shadow: 0 0 20px var(--color-primary);

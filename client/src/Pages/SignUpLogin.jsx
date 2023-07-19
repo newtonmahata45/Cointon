@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import "./SignUpLogin.css"; // Import the CSS file for styling
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-let url = "https://cointon-newtonmahata45.vercel.app"; 
-          //"http://localhost:3001";
+let url = "https://cointon-newtonmahata45.vercel.app";
+//"http://localhost:3001";
 
 const SignUpLogin = () => {
   const navigate = useNavigate();
@@ -36,26 +36,16 @@ const SignUpLogin = () => {
     e.preventDefault();
     const { name, phone, email, password, referCode } = user;
     if (isSignUp) {
-      try {
-        const res = await axios.post(`${url}/register`, {
+      // try {
+      axios
+        .post(`${url}/register`, {
           name,
           phone,
           email,
           password,
           referCode,
-        });
-        // const res = await fetch(`${url}register`, {
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/json" },
-        //   body: JSON.stringify({ name, phone, email, password, referCode }),
-        // });10
-        // const createdUser = await res.json();
-
-        // window.alert("Success");
-
-        // console.log("sign up responce => ", createdUser.status);
-
-        if (res.status == 201) {
+        })
+        .then((res) => {
           window.alert(res.data.message);
           setUser({
             name: "",
@@ -64,37 +54,34 @@ const SignUpLogin = () => {
             password,
             referCode: "",
           });
+          setEye(false);
           handleTabToggle();
-        }else{
-          window.alert(err.response.data.message);
-        }
-      } catch (err) {
-        console.log("the signup error =>", err);
-        err.response ? window.alert(err.response.data.message): window.alert(err.message);
-      }
+        })
+        .catch((err) => {
+          console.log(err);
+          err.response ? window.alert(err.response.data.message): window.alert(err.message);
+        });
+      // } catch (err) {
+      // console.log("the signup error =>", err);
+      // err.response ? window.alert(err.response.data.message): window.alert(err.message);
+      // }
     } else {
       // When Login button Clicked
       console.log("Login button Clicked");
-      try {
-        const res = await axios.post(`${url}/login`, { email, password });
-        // const res = await fetch(`${url}login`, {
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/json" },
-        //   body: JSON.stringify({ email, password }),
-        // });
-        // const loginUser = await res.json();
-
-        console.log("login responce=>", res);
-
-        if (res.data.token) {
-          localStorage.setItem("token", res.data.token);
-          window.alert("login successfull");
-          navigate(`/welcome`);
-        }
-      } catch (err) {
-        console.log("the login error =>", err);
-        err.response ? window.alert(err.response.data.message): window.alert(err.message);
-      }
+      await axios
+        .post(`${url}/login`, { email, password })
+        .then((res) => {
+          console.log("login responce=>", res);
+          if (res.data.token) {
+            localStorage.setItem("token", res.data.token);
+            window.alert(res.data.message);
+            navigate(`/welcome`, { state: res.data.userDetail });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          error.response ? window.alert(error.response.data.message): window.alert(error.message);
+        });
     }
   }
 
