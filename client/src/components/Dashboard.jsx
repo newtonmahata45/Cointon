@@ -37,7 +37,6 @@ function Dashboard({ userProfile }) {
               )
               .map((each) => {
                 return (
-                  // <div key={each.id}> <span>{each.name}</span> <span>{each.price_change_percentage_24h.toFixed(2)}%</span></div>
                   <Link
                     to={`/coins/${each.id}`}
                     className="coin-bar"

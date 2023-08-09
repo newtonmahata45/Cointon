@@ -14,9 +14,9 @@ const Header = ({theUser}) => {
   const [search, setSearch] = useState("");
   // const [loding,setLoding] = useState(false);
 
-  console.log("theUser=>",theUser)
-
+  
   const fetchCoins = async () => {
+    console.log("theUser=>",theUser)
     // setLoding(true);
     // const { data } = await axios.get(CoinList(currency));
     const data = CoinList(currency);

@@ -39,38 +39,7 @@ function WelcomePage() {
   return (
     <div className="welcome" onClick={checked()}>
       <nav className="navbar">
-        <Header userProfile={userProfile}/>
-        {/* <nav> 
-           <Link to={"/"} className="homelink">
-            <img src="../cointonlogo3.png" className="logoimg" />
-            <div className="logoname">
-              <h1>Cointon</h1>
-              <h1> Cointon</h1>
-            </div>
-          </Link>
-          <p></p>
-          <div className="input-section">
-            <div className="search-bar">
-              <i className="fa fa-search"></i>
-              <input
-                type="search"
-                placeholder="Search coins"
-                className="search-input"
-                id="search-input"
-                value={search}
-                onChange={(e) => setSearch(e.target.value.toLowerCase())}
-              />
-            </div>
-            <select
-              variant="outlined"
-              value={currency}
-              onChange={(e) => setCurrency(e.target.value)}
-            >
-              <option value={"USD"}>$ USD</option>
-              <option value={"INR"}>₹ INR</option>
-            </select>
-          </div> 
-         </nav> */}
+        <Header theUser={userProfile}/>
       </nav>
 
       <div className="content">
