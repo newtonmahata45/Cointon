@@ -148,9 +148,9 @@
   letter-spacing: 1px;
   cursor: pointer;
   box-shadow: inset 10px 10px 10px rgba(190, 1, 254, 0.05),
-  15px 25px 10px rgba(190, 1, 254, 0.1),
-  15px 20px 20px rgba(190, 1, 254, 0.1),
-  inset -10px -10px 15px rgb(255, 255, 255,0.5);
+    15px 25px 10px rgba(190, 1, 254, 0.1),
+    15px 20px 20px rgba(190, 1, 254, 0.1),
+    inset -10px -10px 15px rgb(255, 255, 255,0.5);
   border-radius: 44% 56% 65% 35% / 57% 58% 42% 43% ;
   /* border: 1px solid blueviolet; */
   transition: .25s;
@@ -262,7 +262,7 @@
   background: rgb(245, 254, 255);
 }
 .body .container .drop .content .form  .input i{
-  color: #cfcfcf;
+  color: rgba(0, 0, 0, 0.5);
   position: absolute;
   padding-top: 5px;
   right: 2%;

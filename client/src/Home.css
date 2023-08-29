@@ -311,10 +311,13 @@
 /* *********************** SIGN BUTTONS ************************* */
 .header .container .profile-section {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 240px;
   /* border: 1px solid cyan; */
   color: dodgerblue;
   /* margin-right: 7%; */
+  gap:3%;
   cursor: pointer;
 }
 .home .header .container .sign {
@@ -364,6 +367,7 @@
   align-items: center;
   gap: 10px;
   color:white
+
 }
 
 button:hover {

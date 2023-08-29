@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-// import './App.css'
+import './App.css'
 
 import Homepage from './Pages/Homepage';
 import CoinPage from './Pages/CoinPage';
 import SignUpLogin from './Pages/SignUpLogin';
 import WelcomePage from './Pages/WelcomePage';
 import { useEffect } from 'react';
+
 // let onlineStatus = navigator.onLine ? "ONLINE NOW":"OFFLINE NOW";
 
 

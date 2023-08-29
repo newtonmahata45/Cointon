@@ -25,6 +25,7 @@ function CoinPage() {
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id, currency));
     setCoin(data);
+    console.log("data",data)
   };
 
   useEffect(() => {

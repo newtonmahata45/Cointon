@@ -24,6 +24,7 @@ const SignUpLogin = () => {
     referCode: "",
   });
   const [eye, setEye] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleTabToggle = () => {
     setIsSignUp(!isSignUp);
@@ -36,7 +37,7 @@ const SignUpLogin = () => {
     e.preventDefault();
     const { name, phone, email, password, referCode } = user;
     if (isSignUp) {
-      // try {
+      setIsLoading(true)
       axios
         .post(`${url}/register`, {
           name,
@@ -46,6 +47,7 @@ const SignUpLogin = () => {
           referCode,
         })
         .then((res) => {
+          setIsLoading(false)
           window.alert(res.data.message);
           setUser({
             name: "",
@@ -58,19 +60,18 @@ const SignUpLogin = () => {
           handleTabToggle();
         })
         .catch((err) => {
+          setIsLoading(false)
           console.log(err);
-          err.response ? window.alert(err.response.data.message): window.alert(err.message);
+          err.response ? window.alert(err.response.data.message) : window.alert(err.message);
         });
-      // } catch (err) {
-      // console.log("the signup error =>", err);
-      // err.response ? window.alert(err.response.data.message): window.alert(err.message);
-      // }
     } else {
       // When Login button Clicked
       console.log("Login button Clicked");
+      setIsLoading(true)
       await axios
         .post(`${url}/login`, { email, password })
         .then((res) => {
+          setIsLoading(false)
           console.log("login responce=>", res);
           if (res.data.token) {
             localStorage.setItem("token", res.data.token);
@@ -79,8 +80,9 @@ const SignUpLogin = () => {
           }
         })
         .catch((error) => {
+          setIsLoading(false)
           console.log(error);
-          error.response ? window.alert(error.response.data.message): window.alert(error.message);
+          error.response ? window.alert(error.response.data.message) : window.alert(error.message);
         });
     }
   }
@@ -89,127 +91,129 @@ const SignUpLogin = () => {
     const newUser = { ...user };
     newUser[e.target.id] = e.target.value;
     setUser(newUser);
-    console.log(newUser);
+    console.log(    newUser);
   }
   return (
     <div className="body">
-      {/* <div className="background">0</div> */}
-      <div className="container">
-        {/* <div className="card"> */}
-        <div className="drop">
-          <div className="content">
-            <div className="tabs">
-              <div
-                className={`tab ${isSignUp ? "active" : "inactive"}`}
-                onClick={handleTabToggle}
-              >
-                <h2>Sign up</h2>
+      {isLoading
+        ? <div className="spinner-container">
+          <div className="loading-spinner"></div>
+        </div> :
+        <div className="container">
+          <div className="drop">
+            <div className="content">
+              <div className="tabs">
+                <div
+                  className={`tab ${isSignUp ? "active" : "inactive"}`}
+                  onClick={handleTabToggle}
+                >
+                  <h2>Sign up</h2>
+                </div>
+                <div
+                  className={`tab ${!isSignUp ? "activ" : "inactiv"}`}
+                  onClick={handleTabToggle}
+                >
+                  <h2>Log in</h2>
+                </div>
               </div>
-              <div
-                className={`tab ${!isSignUp ? "activ" : "inactiv"}`}
-                onClick={handleTabToggle}
-              >
-                <h2>Log in</h2>
-              </div>
+              <form className="form" onSubmit={(e) => submit(e)}>
+                {/* Sign Up Form */}
+                {isSignUp && (
+                  <React.Fragment>
+                    <div className="inputs">
+                      <div className="input">
+                        <input
+                          onChange={(e) => handle(e)}
+                          value={user.name}
+                          type="text"
+                          placeholder="Full Name"
+                          id="name"
+                          required
+                        />
+                      </div>
+                      <div className="input">
+                        <input
+                          onChange={(e) => handle(e)}
+                          value={user.phone}
+                          type="text"
+                          placeholder="Mobile Number"
+                          id="phone"
+                          required
+                        />
+                      </div>
+                      <div className="input">
+                        <input
+                          onChange={(e) => handle(e)}
+                          value={user.email}
+                          type="email"
+                          placeholder="Email"
+                          id="email"
+                          required
+                        />
+                      </div>
+                      <div className="input">
+                        <input
+                          onChange={(e) => handle(e)}
+                          value={user.password}
+                          type={eye ? "password" : "text"}
+                          placeholder="Password"
+                          id="password"
+                          required
+                        />
+                        <i
+                          className={eye ? "fa fa-eye-slash" : "fa fa-eye"}
+                          onClick={handleEye}
+                        ></i>
+                      </div>
+                      <div className="input">
+                        <input
+                          onChange={(e) => handle(e)}
+                          value={user.referCode}
+                          type="text"
+                          placeholder="Refer Code"
+                          id="referCode"
+                        />
+                      </div>
+                    </div>
+                    <button type="submit">Sign up</button>
+                  </React.Fragment>
+                )}
+                {/* Login Form */}
+                {!isSignUp && (
+                  <React.Fragment>
+                    <div className="inputs">
+                      <div className="input">
+                        <input
+                          onChange={(e) => handle(e)}
+                          value={user.email}
+                          type="email"
+                          placeholder="Email"
+                          id="email"
+                          required
+                        />
+                      </div>
+                      <div className="input">
+                        <input
+                          onChange={(e) => handle(e)}
+                          value={user.password}
+                          type={eye ? "password" : "text"}
+                          placeholder="Password"
+                          id="password"
+                          required
+                        />
+                        <i
+                          className={eye ? "fa fa-eye-slash" : "fa fa-eye"}
+                          onClick={handleEye}
+                        ></i>
+                      </div>
+                    </div>
+                    <button type="submit">Log In </button>
+                  </React.Fragment>
+                )}
+              </form>
             </div>
-            <form className="form" onSubmit={(e) => submit(e)}>
-              {/* Sign Up Form */}
-              {isSignUp && (
-                <React.Fragment>
-                  <div className="inputs">
-                    <div className="input">
-                      <input
-                        onChange={(e) => handle(e)}
-                        value={user.name}
-                        type="text"
-                        placeholder="Full Name"
-                        id="name"
-                        required
-                      />
-                    </div>
-                    <div className="input">
-                      <input
-                        onChange={(e) => handle(e)}
-                        value={user.phone}
-                        type="text"
-                        placeholder="Mobile Number"
-                        id="phone"
-                        required
-                      />
-                    </div>
-                    <div className="input">
-                      <input
-                        onChange={(e) => handle(e)}
-                        value={user.email}
-                        type="email"
-                        placeholder="Email"
-                        id="email"
-                        required
-                      />
-                    </div>
-                    <div className="input">
-                      <input
-                        onChange={(e) => handle(e)}
-                        value={user.password}
-                        type={eye ? "password" : "text"}
-                        placeholder="Password"
-                        id="password"
-                        required
-                      />
-                      <i
-                        className={eye ? "fa fa-eye-slash" : "fa fa-eye"}
-                        onClick={handleEye}
-                      ></i>
-                    </div>
-                    <div className="input">
-                      <input
-                        onChange={(e) => handle(e)}
-                        value={user.referCode}
-                        type="text"
-                        placeholder="Refer Code"
-                        id="referCode"
-                      />
-                    </div>
-                  </div>
-                  <button type="submit">Sign up</button>
-                </React.Fragment>
-              )}
-              {/* Login Form */}
-              {!isSignUp && (
-                <React.Fragment>
-                  <div className="inputs">
-                    <div className="input">
-                      <input
-                        onChange={(e) => handle(e)}
-                        value={user.email}
-                        type="email"
-                        placeholder="Email"
-                        id="email"
-                        required
-                      />
-                    </div>
-                    <div className="input">
-                      <input
-                        onChange={(e) => handle(e)}
-                        value={user.password}
-                        type={eye ? "password" : "text"}
-                        placeholder="Password"
-                        id="password"
-                        required
-                      />
-                      <i
-                        className={eye ? "fa fa-eye-slash" : "fa fa-eye"}
-                        onClick={handleEye}
-                      ></i>
-                    </div>
-                  </div>
-                  <button type="submit">Log In </button>
-                </React.Fragment>
-              )}
-            </form>
           </div>
-        </div>
-      </div>
+        </div>}
     </div>
   );
 }; //name, phone, email, password, city, referCode
