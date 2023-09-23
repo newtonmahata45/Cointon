@@ -29,4 +29,4 @@ router.put("/closetrade", authenticate, closeTrade);     // { priceAt, symbol }
 router.get("/history", authenticate, tradeHistory);     // Query Params
 
 
-module.exports = router;
+module.exports = router ;
