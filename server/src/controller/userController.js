@@ -1,5 +1,5 @@
-const userModel = require("../models/userModel");
-const jwt = require("jsonwebtoken");
+import userModel from "../models/userModel.js";
+import jwt from "jsonwebtoken";
 // const nodemailer = require("nodemailer");
 
 const registerUser = async function (req, res) {
@@ -102,14 +102,12 @@ let favorite = async function (req, res) {
         if (Object.keys(req.body).length == 0) { return res.status(200).json(favArr) }
         if (addFav) {
             for (let i = 0; i < favArr.length; i++) {
-
                 if (favArr[i] == addFav) { return res.status(409).send({ status: false, message: "Already added" }) }
             }
             userDetail.favorites.push(addFav);
         }
         if (removeFav) {
             for (let j = 0; j < favArr.length; j++) {
-
                 if (favArr[j] == removeFav) {
                     userDetail.favorites.splice(j, 1)
                     break;
@@ -128,4 +126,4 @@ let favorite = async function (req, res) {
 }
 
 
-module.exports = { registerUser, logIn, getProfile, favorite }
+export { registerUser, logIn, getProfile, favorite }

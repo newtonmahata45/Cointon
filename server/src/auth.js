@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken")
+import { verify } from "jsonwebtoken";
 
 //================================================ Authentication ======================================================//
 
@@ -10,7 +10,7 @@ const authenticate = function (req, res, next) {
             return res.status(400).send({ status: false, message: "Token must be present in headers" })
         }
             
-        jwt.verify(token, "secret-key-of-newton", function (err, decodedToken) {
+        verify(token, "secret-key-of-newton", function (err, decodedToken) {
 
             if (err) {
                 console.log("=>",err.message)
@@ -32,7 +32,4 @@ const authenticate = function (req, res, next) {
 }
 
 
-
-
-
-module.exports.authenticate = authenticate
+export { authenticate };

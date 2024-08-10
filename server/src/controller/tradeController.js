@@ -1,6 +1,6 @@
-const userModel = require("../models/userModel");
-const tradeModel = require("../models/tradeModel");
-const axios = require("axios")
+import userModel from "../models/userModel.js";
+import tradeModel from "../models/tradeModel.js";
+import axios from "axios";
 
 let createTrade = async function (req, res) {
   try {
@@ -42,14 +42,13 @@ let createTrade = async function (req, res) {
         .send({ status: false, message: "Symbol is not vaild" });
 
     let price = coin["data"][`${symbol}`]["inr"];
-    let margin = price * quantity/data.leverage; // Margin used in this trade;
+    let margin = price * quantity / data.leverage; // Margin used in this trade;
 
     if (user.fund < margin) {
       return res.status(406).send({
         status: false,
-        message: `Insufficient Balance, add ₹ ${
-          margin.toFixed(2) - user.fund
-        } more to execute this trade`,
+        message: `Insufficient Balance, add ₹ ${margin.toFixed(2) - user.fund
+          } more to execute this trade`,
       });
     }
 
@@ -229,14 +228,13 @@ let updateTrade = async function (req, res) {
 
     let user = await userModel.findById(userId);
 
-    let margin = price * quantity/theTrade.leverage; // Margin used in this trade;
+    let margin = price * quantity / theTrade.leverage; // Margin used in this trade;
 
     if (user.fund < margin) {
       return res.status(406).send({
         status: false,
-        message: `Insufficient Balance, add ₹ ${
-          margin.toFixed(2) - user.fund
-        } more to execute this trade`,
+        message: `Insufficient Balance, add ₹ ${margin.toFixed(2) - user.fund
+          } more to execute this trade`,
       });
     }
 
@@ -312,21 +310,21 @@ let crossUpdateTrade = async function (req, res) {
     }
 
     let coin = await axios.get(
-        `https://api.coingecko.com/api/v3/simple/price?ids=${symbol}&vs_currencies=inr`
-      );
-      if (!coin["data"][`${symbol}`])
-        return res
-          .status(400)
-          .send({ status: false, message: "Symbol is not vaild" });
-  
-      let price = coin["data"][`${symbol}`]["inr"];
-  
+      `https://api.coingecko.com/api/v3/simple/price?ids=${symbol}&vs_currencies=inr`
+    );
+    if (!coin["data"][`${symbol}`])
+      return res
+        .status(400)
+        .send({ status: false, message: "Symbol is not vaild" });
+
+    let price = coin["data"][`${symbol}`]["inr"];
+
 
     let oldAt = theTrade.buyAt || theTrade.sellAt;
 
     let profit = 0;
     if (sellAt) {
-        sellAt = price;
+      sellAt = price;
       if (theTrade.sellAt) {
         return res
           .status(400)
@@ -338,7 +336,7 @@ let crossUpdateTrade = async function (req, res) {
         (oldAt * theTrade.quantity + sellAt * quantity) /
         (theTrade.quantity + quantity);
     } else {
-        buyAt =price;
+      buyAt = price;
       if (theTrade.buyAt) {
         return res
           .status(400)
@@ -408,10 +406,10 @@ let closeTrade = async function (req, res) {
     }
 
     let coin = await axios.get(
-        `https://api.coingecko.com/api/v3/simple/price?ids=${symbol}&vs_currencies=inr`
-      );
+      `https://api.coingecko.com/api/v3/simple/price?ids=${symbol}&vs_currencies=inr`
+    );
     if (!coin["data"][`${symbol}`])
-    return res
+      return res
         .status(400)
         .send({ status: false, message: "Symbol is not vaild" });
 
@@ -454,9 +452,15 @@ let closeTrade = async function (req, res) {
   }
 };
 
-module.exports.createTrade = createTrade;
-module.exports.openTrades = openTrades;
-module.exports.updateTrade = updateTrade;
-module.exports.crossUpdateTrade = crossUpdateTrade;
-module.exports.closeTrade = closeTrade;
-module.exports.tradeHistory = tradeHistory;
+
+export { createTrade };
+
+export { openTrades };
+
+export { updateTrade };
+
+export { crossUpdateTrade };
+
+export { closeTrade };
+
+export { tradeHistory };

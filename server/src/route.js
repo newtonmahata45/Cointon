@@ -1,9 +1,9 @@
-const express = require("express");
-const router = express.Router();
-const { registerUser, logIn, getProfile, favorite } = require("./controller/userController")
-const { getFund, updateFund } = require("./controller/fundController")
-const { createTrade, openTrades, updateTrade,crossUpdateTrade, closeTrade,tradeHistory } = require("./controller/tradeController")
-const { authenticate } = require("./auth")
+import { Router } from "express";
+const router = Router();
+import { registerUser, logIn, getProfile, favorite } from "./controller/userController.js";
+import { getFund, updateFund } from "./controller/fundController.js";
+import { createTrade, openTrades, updateTrade, crossUpdateTrade, closeTrade, tradeHistory } from "./controller/tradeController.js";
+import { authenticate } from "./auth.js";
 
 
 // ****************************** USER ***************************
@@ -29,4 +29,4 @@ router.put("/closetrade", authenticate, closeTrade);     // { priceAt, symbol }
 router.get("/history", authenticate, tradeHistory);     // Query Params
 
 
-module.exports = router ;
+export default router ;

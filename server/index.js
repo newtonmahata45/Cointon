@@ -1,15 +1,15 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const route = require("./src/route");
-const dotenv = require("dotenv");
-const multer = require("multer");
-const cors = require('cors');
+import express from "express";
+import mongoose from "mongoose";
+import route from "./src/route.js";
+import { config } from "dotenv";
+import multer from "multer";
+import cors from 'cors';
 
 const app = express();
 
 app.use(express.json());
 
-dotenv.config();
+config();
 
 app.use(multer().any());
 
@@ -26,6 +26,6 @@ app.use((request, response) => {
     return response.status(400).send({ status: false, message: "End point is incorrect" })
 });
 
-app.listen(process.env.PORT || 5000, () => {
-    console.log(`Express app is running on port:`, (process.env.PORT || 5000))
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`Express app is running on port:`, (process.env.PORT || 3000))
 })

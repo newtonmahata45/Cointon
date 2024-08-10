@@ -1,4 +1,4 @@
-const userModel = require("../models/userModel");
+import userModel from "../models/userModel.js";
 
 
 let getFund = async function (request, response) {
@@ -31,4 +31,4 @@ let updateFund = async function (req, res) {
 }
 
 
-module.exports = { getFund, updateFund }
+export { getFund, updateFund }
