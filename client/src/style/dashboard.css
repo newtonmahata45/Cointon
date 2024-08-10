@@ -1,0 +1,56 @@
+
+.dashboard .landing{
+	border:1px solid red;
+	display:flex;
+}
+
+.tradingview-widget-container{
+	min-width: 810px;
+	border:2px solid maroon;
+}
+.dashboard section{
+	display: flex;
+	flex-direction: column;
+	align-items:center;
+	justify-content:space-between;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+}
+.dashboard section div div{
+	background:pink;
+	display:flex;
+	justify-content:space-between;
+	margin-bottom:0.5rem;
+}
+.dashboard Carousal{
+	background: red;
+}
+.table {
+    border:1px solid red;
+    background-color:#fff5;
+  }
+  table, th, td{
+    padding: .5rem;
+  }
+  .table thead {
+   border: 1px solid red;
+  }
+  .table thead {
+    border: 1px solid red;
+    width: 100%;
+  }
+  .table thead :nth-child(2) {
+    /* border: 1px solid rgb(53, 21, 21); */
+    width: 35%;
+  }
+  /*
+  .table tbody {
+    border: 1px solid rgb(247, 0, 255);
+  }
+  */
+  .table-row :nth-child(1){
+	display:flex;
+	align-items:center;
+	justify-content:space-evenly;
+  }

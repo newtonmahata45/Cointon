@@ -1,4 +1,4 @@
-const userModel = require("../models/userModel");
+import userModel from "../models/userModel.js";
 
 
 let getFund = async function (request, response) {
@@ -23,7 +23,7 @@ let updateFund = async function (req, res) {
 
         let updateFund = await userModel.findByIdAndUpdate( userId , { $inc: { fund:addFund } }, { new: true })
 
-        return res.status(200).send({status:true,fund:updateFund.fund} )
+        return res.status(200).send({status:true, message:"success", fund:updateFund.fund} )
     } catch (err) {
         console.log(err)
         return res.status(500).send({ status: false, message: err.message })
@@ -31,4 +31,4 @@ let updateFund = async function (req, res) {
 }
 
 
-module.exports = { getFund, updateFund }
+export { getFund, updateFund }

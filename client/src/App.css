@@ -136,4 +136,27 @@ button:hover {
 
 .search-bar input[type="search"]::placeholder{
   color: var(--color-gray);
+}*/
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading-spinner {
+  width: 75px;
+  height: 75px;
+  border: 15px solid #fff; /* Light grey */
+  border-top: 15px solid var(--color-primary); /* Blue */
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+}
+
+.spinner-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
 }

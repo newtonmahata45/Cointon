@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const objectId = mongoose.Schema.Types.ObjectId
-const tradeSchema = new mongoose.Schema({
+import { Schema, model } from "mongoose";
+const objectId = Schema.Types.ObjectId
+const tradeSchema = new Schema({
     userId: {
         type: objectId,
         ref: "User"
@@ -10,8 +10,8 @@ const tradeSchema = new mongoose.Schema({
     sellAt: { type: Number, default: null },
     leverage: { type: Number, default: 1 },
     quantity: { type: Number, default: 1 },
-    isShorted: {type:Boolean, default: false}
+    // isShorted: {type:Boolean, default: false}
 }, { timestamps: true })
 
 
-module.exports = mongoose.model("Trade", tradeSchema)
+export default model("Trade", tradeSchema)
