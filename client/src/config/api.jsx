@@ -8,8 +8,8 @@ export const SingleCoin = (id) =>
 export const HistoricalChart = (id, days = 365, currency) =>
   `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}`;
 
-// export const TrendingCoins = (currency) =>
-//   `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=gecko_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`;
+export const TrendingCoins =  (currency) =>
+  `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=gecko_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`;
 
 // const options = {
 //   method: 'GET',
@@ -40,87 +40,87 @@ export const HistoricalChart = (id, days = 365, currency) =>
 // 	console.error(error);
 // });
 
-export const TrendingCoins =  (currency) =>  [
-  {
-  "id": "bitcoin",
-  "symbol": "btc",
-  "name": "Bitcoin",
-  "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
-  "current_price": 2355762,
-  "price_change_percentage_24h": 3.25573,
-  },
-  {
-  "id": "ethereum",
-  "symbol": "eth",
-  "name": "Ethereum",
-  "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
-  "current_price": 157014,
-  "price_change_percentage_24h": 5.51664,
-  },
-  {
-  "id": "tether",
-  "symbol": "usdt",
-  "name": "Tether",
-  "image": "https://assets.coingecko.com/coins/images/325/large/Tether.png?1668148663",
-  "current_price": 82.25,
-  "price_change_percentage_24h": 0.04543,
-  },
-  {
-  "id": "binancecoin",
-  "symbol": "bnb",
-  "name": "BNB",
-  "image": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
-  "current_price": 25770,
-  "price_change_percentage_24h": 1.36241,
-  },
-  {
-  "id": "usd-coin",
-  "symbol": "usdc",
-  "name": "USD Coin",
-  "image": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389",
-  "current_price": 82.17,
-  "price_change_percentage_24h": -0.12295,
-  },
-  {
-  "id": "ripple",
-  "symbol": "xrp",
-  "name": "XRP",
-  "image": "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731",
-  "current_price": 41.57,
-  "price_change_percentage_24h": 2.63348,
-  },
-  {
-  "id": "cardano",
-  "symbol": "ada",
-  "name": "Cardano",
-  "image": "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860",
-  "current_price": 32.47,
-  "price_change_percentage_24h": 1.87661,
-  },
-  {
-  "id": "dogecoin",
-  "symbol": "doge",
-  "name": "Dogecoin",
-  "image": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
-  "current_price": 7.86,
-  "price_change_percentage_24h": -0.14133,
-  },
-  {
-  "id": "staked-ether",
-  "symbol": "steth",
-  "name": "Lido Staked Ether",
-  "image": "https://assets.coingecko.com/coins/images/13442/large/steth_logo.png?1608607546",
-  "current_price": 156581,
-  "price_change_percentage_24h": 5.48846,
-  },
-  {
-  "id": "matic-network",
-  "symbol": "matic",
-  "name": "Polygon",
-  "image": "https://assets.coingecko.com/coins/images/4713/large/matic-token-icon.png?1624446912",
-  "current_price": 95.2,
-  "price_change_percentage_24h": 5.60169,
-  }];
+// export const TrendingCoins =  (currency) =>  [
+//   {
+//   "id": "bitcoin",
+//   "symbol": "btc",
+//   "name": "Bitcoin",
+//   "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
+//   "current_price": 2355762,
+//   "price_change_percentage_24h": 3.25573,
+//   },
+//   {
+//   "id": "ethereum",
+//   "symbol": "eth",
+//   "name": "Ethereum",
+//   "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
+//   "current_price": 157014,
+//   "price_change_percentage_24h": 5.51664,
+//   },
+//   {
+//   "id": "tether",
+//   "symbol": "usdt",
+//   "name": "Tether",
+//   "image": "https://assets.coingecko.com/coins/images/325/large/Tether.png?1668148663",
+//   "current_price": 82.25,
+//   "price_change_percentage_24h": 0.04543,
+//   },
+//   {
+//   "id": "binancecoin",
+//   "symbol": "bnb",
+//   "name": "BNB",
+//   "image": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
+//   "current_price": 25770,
+//   "price_change_percentage_24h": 1.36241,
+//   },
+//   {
+//   "id": "usd-coin",
+//   "symbol": "usdc",
+//   "name": "USD Coin",
+//   "image": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389",
+//   "current_price": 82.17,
+//   "price_change_percentage_24h": -0.12295,
+//   },
+//   {
+//   "id": "ripple",
+//   "symbol": "xrp",
+//   "name": "XRP",
+//   "image": "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731",
+//   "current_price": 41.57,
+//   "price_change_percentage_24h": 2.63348,
+//   },
+//   {
+//   "id": "cardano",
+//   "symbol": "ada",
+//   "name": "Cardano",
+//   "image": "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860",
+//   "current_price": 32.47,
+//   "price_change_percentage_24h": 1.87661,
+//   },
+//   {
+//   "id": "dogecoin",
+//   "symbol": "doge",
+//   "name": "Dogecoin",
+//   "image": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
+//   "current_price": 7.86,
+//   "price_change_percentage_24h": -0.14133,
+//   },
+//   {
+//   "id": "staked-ether",
+//   "symbol": "steth",
+//   "name": "Lido Staked Ether",
+//   "image": "https://assets.coingecko.com/coins/images/13442/large/steth_logo.png?1608607546",
+//   "current_price": 156581,
+//   "price_change_percentage_24h": 5.48846,
+//   },
+//   {
+//   "id": "matic-network",
+//   "symbol": "matic",
+//   "name": "Polygon",
+//   "image": "https://assets.coingecko.com/coins/images/4713/large/matic-token-icon.png?1624446912",
+//   "current_price": 95.2,
+//   "price_change_percentage_24h": 5.60169,
+//   }];
 
 
 

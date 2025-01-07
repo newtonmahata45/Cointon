@@ -146,8 +146,8 @@ let tradeHistory = async function (req, res) {
       userId: userId,
       ...filters,
       $nor: [{ buyAt: null }, { sellAt: null }],
-    });
-    history.reverse();
+    }).limit(10).sort({ createdAt: -1 });
+    // history.reverse();
     return res.status(200).send({ status: true, data: history });
   } catch (error) {
     console.log(error);
@@ -452,15 +452,11 @@ let closeTrade = async function (req, res) {
   }
 };
 
-
-export { createTrade };
-
-export { openTrades };
-
-export { updateTrade };
-
-export { crossUpdateTrade };
-
-export { closeTrade };
-
-export { tradeHistory };
+export { 
+  createTrade, 
+  openTrades,
+  updateTrade,
+  crossUpdateTrade,
+  closeTrade,
+  tradeHistory
+};

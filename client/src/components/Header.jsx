@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
 import axios from "axios";
-import { CoinList } from "../config/api";
+import { TrendingCoins } from "../config/api";
 import { numberWithCommas } from "./Banner/Carousal";
-
 const Header = ({theUser}) => {
+  let CoinList = TrendingCoins;
   const navigate = useNavigate();
   
   const { currency, symbol, setCurrency } = CryptoState();
@@ -18,9 +18,9 @@ const Header = ({theUser}) => {
   const fetchCoins = async () => {
     console.log("theUser=>",theUser)
     // setLoding(true);
-    // const { data } = await axios.get(CoinList(currency));
-    const data = CoinList(currency);
-    // console.log("searcheddata=>", data);
+    const { data } = await axios.get(CoinList(currency));
+    // const data = await CoinList(currency);
+    console.log("searcheddata=>", data);
     setCoins(data);
     // setLoding(false);
   };
